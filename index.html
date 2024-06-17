@@ -5,75 +5,249 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shadow Scripts</title>
     <style>
+        /* Global styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #1e1e1e;
-            color: #f1f1f1;
-            margin: 0;
-            padding: 0;
-        }
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-8569.jpg?size=626&ext=jpg&ga=GA1.1.1518270500.1717632000&semt=ais_user');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
         header {
-            background-color: #333;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #9370DB;
+    width: 100%;
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://img.freepik.com/premium-photo/purple-blue-waves-dark-background_323910-220.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.3; /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the background is behind the text */
+}
+
         .container {
             padding: 20px;
+            width: 80%;
+            max-width: 1200px;
         }
+
+        /* Search bar */
         .search-bar {
             margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            
         }
         .search-bar input {
             width: 100%;
+            max-width: 600px;
             padding: 10px;
             font-size: 16px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            background-color: #222;
-            color: #f1f1f1;
+            border: 2px solid #9370DB;
+            border-radius: 25px;
+            background-color: #1F1F1F;
+            color: #E0E0E0;
+            outline: none;
         }
+
+        /* Results */
         .results {
-            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
         .result-item {
-            background-color: #333;
+            background-color: #1E1E1E;
             padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 4px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: calc(33.33% - 20px);
+            max-width: 300px;
+            background-image: url('https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279139.jpg?size=626&ext=jpg&ga=GA1.1.2116175301.1718236800&semt=ais_user');
+             background-size: cover;
+             background-repeat: no-repeat;
+              background-attachment: fixed;
+        }
+        .result-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
         .result-item h2 {
             margin: 0;
-            font-size: 20px;
+            font-size: 22px;
+            color: #9370DB;
         }
         .result-item p {
             margin: 5px 0 0;
             font-size: 16px;
         }
+
+        /* Social media */
+        .social-media {
+            margin: 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+        .social-media a {
+            margin: 0 10px;
+            color: #E0E0E0;
+            font-size: 24px;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+        .social-media a.youtube {
+            background-color: #FF0000;
+        }
+        .social-media a.youtube:hover {
+            background-color: #CC0000;
+        }
+        .social-media a.discord {
+            background-color: #7289DA;
+        }
+        .social-media a.discord:hover {
+            background-color: #5b6eae;
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 15px;
+            z-index: 1000;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-image: url('https://i.pinimg.com/564x/60/61/5a/60615aefa3adbc2f5307e5e9e93de99f.jpg');
+             background-size: cover;
+             background-repeat: no-repeat;
+              background-attachment: fixed;
+        }
+        .popup h2 {
+            margin-top: 0;
+            font-size: 26px;
+            color: #9370DB;
+        }
+        .popup p {
+            font-size: 18px;
+        }
+        .popup iframe {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .popup button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background-color: #444;
+            color: #E0E0E0;
+            cursor: pointer;
+            transition: background-color 0.
+        }
+        .footer-text {
+            color: #FFFFFF;
+            font-size: 14px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <header>Shadow Scripts</header>
+    <header>
+        Shadow Scripts
+        <div class="header-background"></div>
+    </header>
+    
+    <div class="social-media">
+        <a href="https://www.youtube.com/channel/UC3hoS0uy2XBNdBTX95jpFCg" target="_blank" class="youtube">YouTube</a>
+        <a href="#" target="_blank" class="discord">Discord</a>
+    </div>
     <div class="container">
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search scripts..." onkeyup="searchScripts()">
         </div>
+        <!-- SCRIPTMAKER -->
         <div class="results" id="results">
-            <!-- Search results will be displayed here -->
-            <div class="result-item">
-                <h2>Sample Script 1</h2>
-                <p>Description of the script goes here.</p>
+            <!-- Sample script items -->
+            <div class="result-item" onclick="showPopup('Captive 1.0', 'This script includes ESP to Computers Freezing pots Beast And players and also has some tools for the localplayer like fly and noclip', 'captiveScriptContent', 'https://www.youtube.com/embed/KHjbkBMyuPc')">
+                <h2>Captive Script</h2>
+                <p>Boost your Captive gameplay with this script! Features include:
+
+                    - ESP to Beast
+                    - ESP to Players
+                    - ESP to Computers
+                    - ESP to Freezing Pots
+                    - ESP to Escape Doors
+                    - Fly
+                    - Walkspeed
+                    - FOV (Field of View)
+                    - Jumppower
+                    - Noclip</p>
             </div>
-            <div class="result-item">
-                <h2>Sample Script 2</h2>
-                <p>Description of the script goes here.</p>
+            <div id="captiveScriptContent" style="display:none;">
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowScripts4Roblox/PROTECTEDLUA/main/Library/Vynixu'sLib.lua"))()
             </div>
-            <!-- Add more script items as needed -->
+
+            <div class="result-item" onclick="showPopup('Universal 1.0', 'That one script for all games Lmao', 'universalScriptContent', 'https://www.youtube.com/embed/KHjbkBMyuPc')">
+                <h2>Universal Script</h2>
+                <p>A script useful for anygame On roblox!</p>
+            </div>
+            <div id="universalScriptContent" style="display:none;">
+                print("This is a universal script!")
+            </div>
+
+            
+
+
         </div>
     </div>
 
+    <div class="popup" id="popup">
+        <h2 id="popupTitle">Script Title</h2>
+        <p id="popupDescription">Script Description</p>
+        <button onclick="copyToClipboard()">Copy</button>
+        <button class="back-button" onclick="hidePopup()">Go Back</button>
+        <iframe id="popupVideo" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="footer-text">© 2024 Shadow Slime. Domain provided by GitHub.</div>
+
     <script>
+        let currentScriptContent = '';
+
         function searchScripts() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let resultItems = document.querySelectorAll('.result-item');
@@ -86,6 +260,34 @@
                 } else {
                     item.style.display = 'none';
                 }
+            });
+        }
+
+        function showPopup(title, description, scriptContentId, videoUrl = '') {
+            currentScriptContent = document.getElementById(scriptContentId).textContent;
+            document.getElementById('popupTitle').innerText = title;
+            document.getElementById('popupDescription').innerText = description;
+            document.getElementById('popup').style.display = 'block';
+
+            let popupVideo = document.getElementById('popupVideo');
+            if (videoUrl) {
+                popupVideo.src = videoUrl;
+                popupVideo.style.display = 'block';
+            } else {
+                popupVideo.style.display = 'none';
+            }
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('popupVideo').src = '';
+        }
+
+        function copyToClipboard() {
+            navigator.clipboard.writeText(currentScriptContent).then(() => {
+                alert('Script copied to clipboard');
+            }, () => {
+                alert('Failed to copy script');
             });
         }
     </script>
