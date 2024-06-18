@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloadable Executors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #121212;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #9370DB;
+            width: 100%;
+            background-color: #1E1E1E;
+        }
+        .container {
+            padding: 20px;
+            width: 80%;
+            max-width: 1200px;
+        }
+        .download-item {
+            background-color: #1E1E1E;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: calc(33.33% - 20px);
+            max-width: 300px;
+            text-align: center;
+        }
+        .download-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .download-item h2 {
+            margin: 0;
+            font-size: 22px;
+            color: #9370DB;
+        }
+        .download-item p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+        .download-item a {
+            color: #9370DB;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Downloadable Executors
+    </header>
+    <div class="container">
+        <div class="download-item">
+            <h2>Executor 1</h2>
+            <p>Description of Executor 1</p>
+            <a href="/Files/Download/SolaraB2.zip" download>SolaraB2</a>
+        </div>
+        <div class="download-item">
+            <h2>Executor 2</h2>
+            <p>Description of Executor 2</p>
+            <a href="/Files/Download/Executor2.zip" download>Download Executor 2</a>
+        </div>
+        <!-- Add more executors as needed -->
+    </div>
+</body>
+</html>
