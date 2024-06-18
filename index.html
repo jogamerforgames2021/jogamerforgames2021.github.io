@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Shadow Scripts</title>
     <style>
-        /* Global styles */
+        
         body {
     font-family: Arial, sans-serif;
     background-color: #121212;
@@ -19,10 +20,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+    
 }
 
-        header {
+    header {
     position: relative;
     padding: 20px;
     text-align: center;
@@ -42,8 +44,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity: 0.3; /* Adjust the opacity as needed */
-    z-index: -1; /* Ensure the background is behind the text */
+    opacity: 0.3;  
+    z-index: -1; 
 }
 
         .container {
@@ -52,7 +54,6 @@
             max-width: 1200px;
         }
 
-        /* Search bar */
         .search-bar {
             margin-bottom: 20px;
             display: flex;
@@ -72,7 +73,7 @@
             outline: none;
         }
 
-        /* Results */
+        
         .results {
             display: flex;
             flex-wrap: wrap;
@@ -107,7 +108,7 @@
             font-size: 16px;
         }
 
-        /* Social media */
+        
         .social-media {
             margin: 20px 0;
             text-align: center;
@@ -135,7 +136,7 @@
             background-color: #5b6eae;
         }
 
-        /* Popup */
+        
         .popup {
             display: none;
             position: fixed;
@@ -184,18 +185,42 @@
             font-size: 14px;
             margin-top: 10px;
         }
+        nav {
+            width: 100%;
+            background-color: #1E1E1E;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #9370DB;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #9370DB;
+            color: #1E1E1E;
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="index.html">Scripts</a>
+        <a href="executors.html">Executors</a>
+        <a href="options.html">Options</a>
+    </nav>
     <header>
         Shadow Scripts
         <div class="header-background"></div>
     </header>
+   
     
-    <div class="social-media">
-        <a href="https://www.youtube.com/channel/UC3hoS0uy2XBNdBTX95jpFCg" target="_blank" class="youtube">YouTube</a>
-        <a href="#" target="_blank" class="discord">Discord</a>
-    </div>
+    
     <div class="container">
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search scripts..." onkeyup="searchScripts()">

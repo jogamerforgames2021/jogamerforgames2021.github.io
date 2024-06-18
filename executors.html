@@ -5,31 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Downloadable Executors</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #E0E0E0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #121212;
-        }
+                body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-8569.jpg?size=626&ext=jpg&ga=GA1.1.1518270500.1717632000&semt=ais_user');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;  
+    
+}
+
         header {
+            position: relative;
             padding: 20px;
             text-align: center;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             color: #9370DB;
             width: 100%;
-            background-color: #1E1E1E;
         }
+
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://img.freepik.com/premium-photo/purple-blue-waves-dark-background_323910-220.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.3;  
+            z-index: -1; 
+        }
+
+        nav {
+            width: 100%;
+            background-color: #1E1E1E;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #9370DB;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #9370DB;
+            color: #1E1E1E;
+        }
+
         .container {
             padding: 20px;
             width: 80%;
             max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #9370DB;
+            border-radius: 25px;
+            background-color: #1F1F1F;
+            color: #E0E0E0;
+            outline: none;
+        }
+
         .download-item {
             background-color: #1E1E1E;
             padding: 15px;
@@ -41,45 +107,148 @@
             width: calc(33.33% - 20px);
             max-width: 300px;
             text-align: center;
+            color: #E0E0E0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         .download-item:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
+
         .download-item h2 {
             margin: 0;
             font-size: 22px;
             color: #9370DB;
         }
+
+        .download-item shitidfk {
+            margin: 5px 0 0;
+            font-size: 16px;
+            color: #8a6fc0;
+        }
+
         .download-item p {
             margin: 5px 0 0;
             font-size: 16px;
         }
-        .download-item a {
-            color: #9370DB;
-            text-decoration: none;
+
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
             font-size: 16px;
-            display: block;
+            font-weight: bold;
+            text-align: center;
+            color: #ffffff;  
+            background-color: #3e2b58;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 2px solid #9370DB; 
+        }
+
+        .button-link:hover {
+            background-color: #7350A0;
+            transform: scale(1.15);
+            color: #fff;
+        }
+
+        .footer-text {
+            color: #FFFFFF;
+            font-size: 14px;
             margin-top: 10px;
+        }
+
+        .ComingSoonbutton-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            color: #ffffff;
+            background-color: #110c18;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 2px solid #3c2d5a;
+        }
+        
+        .SOCIALEXE-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            color: #ffffff;
+            background-color: #5452c0;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 2px solid #7876d6;
+        }
+
+        .SOCIALEXE-link:hover {
+            background-color: #8482ec;
+            transform: scale(1.3);
+            color: #fff;
         }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="index.html">Scripts</a>
+        <a href="executors.html">Executors</a>
+        <a href="options.html">Options</a>
+    </nav>
     <header>
         Downloadable Executors
+        <div class="header-background"></div>
     </header>
+    
     <div class="container">
-        <div class="download-item">
-            <h2>Executor 1</h2>
-            <p>Description of Executor 1</p>
-            <a href="/Files/Download/SolaraB2.zip" download>SolaraB2</a>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search executors..." onkeyup="searchExecutors()">
         </div>
         <div class="download-item">
-            <h2>Executor 2</h2>
-            <p>Description of Executor 2</p>
-            <a href="/Files/Download/Executor2.zip" download>Download Executor 2</a>
+            <h2>Solara</h2>
+            <shitidfk>By: idfk</shitidfk>
+            <p>A bad Executor (Our only hope right now.)</p>
+            <a href="/Files/Download/SolaraB2.zip" class="button-link" download>Download</a>
+            <a href="https://discord.gg/realsolara" class="SOCIALEXE-link" download target="_blank">Solara's Discord Server</a>
         </div>
-        <!-- Add more executors as needed -->
+
+        <div class="download-item">
+            <h2>Wave</h2>
+            <shitidfk>By: idfk</shitidfk>
+            <p>ngl a really good executer but the devs are taking way too much to make such thing.</p>
+            <a href="executors.html" class="ComingSoonbutton-link" download>Coming Soon...</a>
+            <a href="https://discord.gg/getwave" class="SOCIALEXE-link" download target="_blank">Wave's Discord Server</a>
+
+        </div>
     </div>
+
+    <div class="footer-text">© 2024 Shadow Slime. Domain provided by GitHub.</div>
+
+    <script>
+        function searchExecutors() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let downloadItems = document.querySelectorAll('.download-item');
+
+            downloadItems.forEach(item => {
+                let title = item.querySelector('h2').innerText.toLowerCase();
+                let description = item.querySelector('p').innerText.toLowerCase();
+                if (title.includes(input) || description.includes(input)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
