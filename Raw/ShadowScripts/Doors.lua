@@ -221,7 +221,7 @@ MainSection:AddToggle("Entity ESP", {flag = "MonsterESP", default = false}, func
                         ESP:AddObjectListener(fig, {
                         Name = fig.PrimaryPart.Name,
                         CustomName = "Figure",
-                        Color = Color3.fromRGB(255, 25, 25),
+                        Color = Color3.fromRGB(255, 0, 0),
                         PrimaryPart = fig.PrimaryPart,
                         IsEnabled = "RushEspAmbushEspAndShit"
                     })
