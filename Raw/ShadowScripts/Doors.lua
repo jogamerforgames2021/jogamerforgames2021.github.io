@@ -58,7 +58,8 @@ local esptable = {
     keys = {},
     entity = {},
     lockers = {},
-    chests = {}
+    chests = {},
+    books = {}
 }
 
 -- Door ESP Toggle
@@ -393,48 +394,46 @@ MainSection:AddToggle("Chest ESP", {flag = "TreasureESP", default = false}, func
     end
 end)
 
-MainSection:AddToggle("BookESP", {flag = "Bookssss", default = false}, function(bool)
-ESP.Door50BooksEspfr = bool
-  local function check(v)
+MainSection:AddToggle("Book ESP", {flag = "Bookssss", default = false}, function(bool)
+    ESP.Door50BooksEspfr = bool
+    if bool then
+        local function check(v)
             if v:IsA("Model") and (v.Name == "LiveHintBook" or v.Name == "LiveBreakerPolePickup") then
                 task.wait(0.1)
-                
                 ESP:AddObjectListener(v, {
-                        Name = v.PrimaryPart.Name,
-                        CustomName = v.Name,
-                        Color = Color3.fromRGB(255, 255, 255),
-                        IsEnabled = "Door50BooksEspfr"
-                    })
-                table.insert(esptable.books,v)
-
+                    Name = v.PrimaryPart.Name,
+                    CustomName = v.Name,
+                    Color = Color3.fromRGB(255, 255, 255),
+                    IsEnabled = "Door50BooksEspfr"
+                })
+                table.insert(esptable.books, v)
             end
         end
-        
+
         local function setup(room)
             if room.Name == "50" or room.Name == "100" then
                 room.DescendantAdded:Connect(function(v)
-                    check(v) 
+                    check(v)
                 end)
-                
-                for i,v in pairs(room:GetDescendants()) do
+
+                for _, v in pairs(room:GetDescendants()) do
                     check(v)
                 end
             end
         end
-        
+
         local addconnect
         addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
             setup(room)
         end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            setup(room) 
+
+        for _, room in pairs(workspace.CurrentRooms:GetChildren()) do
+            setup(room)
         end
-        
+
         repeat task.wait() until not ESP.Door50BooksEspfr
         addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.books) do
-            esptable.books = {}
-        end 
-    end)
+
+        esptable.books = {}
+    end
+end)
