@@ -393,7 +393,7 @@ MainSection:AddToggle("Chest ESP", {flag = "TreasureESP", default = false}, func
     end
 end)
 
-Toggle = Section:AddToggle("Books ESP", {flag = "Door100/50Itemesp", default = false}, function(bool)
+ MainSection:AddToggle("Books ESP", {flag = "Door100/50Itemesp", default = false}, function(bool)
 ESP.Door50BooksEspfr = bool
   local function check(v)
             if v:IsA("Model") and (v.Name == "LiveHintBook" or v.Name == "LiveBreakerPolePickup") then
