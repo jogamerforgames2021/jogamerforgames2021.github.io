@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave - Shadow Scripts</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/tabs.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>Shadow Scripts</h1>
+            <div>
+                <a href="../index.html">Home</a>
+                <a href="../pages/scripts.html">Scripts</a>
+                <a href="../pages/executors.html" class="active">Executors</a>
+                <a href="../pages/options.html">Options</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header>
+        Solara
+        <div class="header-background"></div>
+    </header>
+
+    <div class="container">
+        <div class="script-container">
+            <h2>Wave</h2>
+            <p>Wave is a free and paid level 7 executer!</p>
+            <p>The Free version having 80% UNC</p>
+            <p>The Paid version having 100% UNC</p>
+
+            <button onclick="window.open('https://discord.com/invite/getwave', '_blank')">Discord Server</button>
+            <button onclick="window.open('https://getwave.gg', '_blank')">Wave's Website</button>
+            <button onclick="window.open('../Files/Download/WaveInstaller.exe', '_blank')">Download</button>
+            <iframe src="https://www.youtube.com/embed/pyJjWGhmBIM" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/ShlOOHuVi08" frameborder="0" allowfullscreen></iframe>
+            <p>!?Changelog?!</p>
+            <textarea readonly>
+                Wave has been updated.
+
+We are thrilled to announce that Wave has been updated. We're truly sorry that it took this long, but from now on update schedule will be back to normal.
+Changelog:
+Updated to latest version: We have updated to the latest version, you can enjoy using Wave now. Make sure to reinstall Wave by going to https://getwave.gg/ otherwise your Wave may be broken.
+Where are the promised new features?
+We apologize that we couldn't finish them in time, the team was away for a while and we came back just in time in order to start working up every ounce of ideas we made up during the time we were away. Now by next update hopefully everything should be finished and ready to be deployed.
+            </textarea>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-text">&copy; 2024 Shadow Scripts. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyScript() {
+            const scriptText = document.querySelector('textarea').value;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                alert('Changelog copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy changelog: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

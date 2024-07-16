@@ -3,324 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Shadow Scripts</title>
-    <meta property="og:type" content="website">
-    <meta content="Shadow Scripts" property="og:title" />
-    <meta content="A new step into Exploiting." property="og:description" />
-    <meta content="https://jogamerforgames2021.github.io/" property="og:url" />
-    <meta content="https://ajsrp.com/wp-content/uploads/2022/10/placeholder.png" property="og:image" />
-    <meta content="#a361e0" data-react-helmet="true" name="theme-color" />
-    <style>
-        
-        body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #E0E0E0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url('https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-8569.jpg?size=626&ext=jpg&ga=GA1.1.1518270500.1717632000&semt=ais_user');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow-x: hidden;
+    <title>Shadow Scripts - Home</title>
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/tabs.css">
     
-}
-
-    header {
-    position: relative;
-    padding: 20px;
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    color: #9370DB;
-    width: 100%;
-}
-
-.header-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://img.freepik.com/premium-photo/purple-blue-waves-dark-background_323910-220.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0.3;  
-    z-index: -1; 
-}
-
-        .container {
-            padding: 20px;
-            width: 80%;
-            max-width: 1200px;
-        }
-
-        .search-bar {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            position: relative;
-            
-        }
-        .search-bar input {
-            width: 100%;
-            max-width: 600px;
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid #9370DB;
-            border-radius: 25px;
-            background-color: #1F1F1F;
-            color: #E0E0E0;
-            outline: none;
-        }
-
-        
-        .results {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .result-item {
-            background-color: #1E1E1E;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: calc(33.33% - 20px);
-            max-width: 300px;
-            background-image: url('https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279139.jpg?size=626&ext=jpg&ga=GA1.1.2116175301.1718236800&semt=ais_user');
-             background-size: cover;
-             background-repeat: no-repeat;
-              background-attachment: fixed;
-        }
-        .result-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-        .result-item h2 {
-            margin: 0;
-            font-size: 22px;
-            color: #9370DB;
-        }
-        .result-item p {
-            margin: 5px 0 0;
-            font-size: 16px;
-        }
-
-        
-        .social-media {
-            margin: 20px 0;
-            text-align: center;
-            width: 100%;
-        }
-        .social-media a {
-            margin: 0 10px;
-            color: #E0E0E0;
-            font-size: 24px;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: background-color 0.3s;
-        }
-        .social-media a.youtube {
-            background-color: #FF0000;
-        }
-        .social-media a.youtube:hover {
-            background-color: #CC0000;
-        }
-        .social-media a.discord {
-            background-color: #7289DA;
-        }
-        .social-media a.discord:hover {
-            background-color: #5b6eae;
-        }
-
-        
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #1E1E1E;
-            padding: 20px;
-            border-radius: 15px;
-            z-index: 1000;
-            width: 80%;
-            max-width: 600px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            background-image: url('https://i.pinimg.com/564x/60/61/5a/60615aefa3adbc2f5307e5e9e93de99f.jpg');
-             background-size: cover;
-             background-repeat: no-repeat;
-              background-attachment: fixed;
-        }
-        .popup h2 {
-            margin-top: 0;
-            font-size: 26px;
-            color: #9370DB;
-        }
-        .popup p {
-            font-size: 18px;
-        }
-        .popup iframe {
-            width: 100%;
-            height: 300px;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-        .popup button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 25px;
-            background-color: #444;
-            color: #E0E0E0;
-            cursor: pointer;
-            transition: background-color 0.
-        }
-        .footer-text {
-            color: #FFFFFF;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-        nav {
-            width: 100%;
-            background-color: #1E1E1E;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: #9370DB;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #9370DB;
-            color: #1E1E1E;
-        }
-    </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
-        <a href="index.html">Scripts</a>
-        <a href="executors.html">Executors</a>
-        <a href="options.html">Options</a>
+        <div class="container">
+            <h1>Shadow Scripts</h1>
+            <div>
+                <a href="index.html" class="active">Home</a>
+                <a href="pages/scripts.html"> Scripts</a>
+                <a href="pages/executors.html">Executors</a>
+                <a href="pages/options.html">Options</a>
+            </div>
+        </div>
     </nav>
-    <header>
-        Shadow Scripts
-        <div class="header-background"></div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Shadow Scripts</h1>
+            <p>Your ultimate destination for the best scripts in Roblox.</p>
+            <a href="pages/scripts.html" class="cta-button">Explore Scripts</a>
+        </div>
     </header>
-   
-    
-    
-    <div class="container">
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search scripts..." onkeyup="searchScripts()">
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Shadow Scripts is dedicated to providing high-quality, innovative scripts for enhancing your Roblox gaming experience. Our team is passionate about delivering the best tools and scripts for the community.</p>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>Our Features</h2>
+        <div class="feature">
+            <div class="feature-content">
+                <h3>Powerful Scripts</h3>
+                <p>Our scripts are designed to enhance your gameplay with various features and tools.</p>
+            </div>
         </div>
-        <!-- SCRIPTMAKER -->
-        <div class="results" id="results">
-            <!-- Sample script items -->
-            <div class="result-item" onclick="showPopup('Captive 1.0', 'This script includes ESP to Computers Freezing pots Beast And players and also has some tools for the localplayer like fly and noclip', 'captiveScriptContent', 'https://www.youtube.com/embed/KHjbkBMyuPc')">
-                <h2>Captive Script</h2>
-                <p>Boost your Captive gameplay with this script! Features include:
-
-                    - ESP to Beast
-                    - ESP to Players
-                    - ESP to Computers
-                    - ESP to Freezing Pots
-                    - ESP to Escape Doors
-                    - Fly
-                    - Walkspeed
-                    - FOV (Field of View)
-                    - Jumppower
-                    - Noclip</p>
+        <div class="feature">
+            <div class="feature-content">
+                <h3>User-Friendly Interface</h3>
+                <p>Easy to use and navigate, ensuring a seamless experience.</p>
             </div>
-            <div id="captiveScriptContent" style="display:none;">
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowScripts4Roblox/PROTECTEDLUA/main/Library/Vynixu'sLib.lua"))()
-            </div>
-
-            <div class="result-item" onclick="showPopup('Universal 1.0', 'That one script for all games Lmao', 'universalScriptContent', 'https://www.youtube.com/embed/KHjbkBMyuPc')">
-                <h2>Universal Script</h2>
-                <p>A script useful for anygame On roblox!</p>
-            </div>
-            <div id="universalScriptContent" style="display:none;">
-                print("This is a universal script!")
-            </div>
-
-            
-
-
         </div>
-    </div>
+        <div class="feature">
+            <div class="feature-content">
+                <h3>Regular Updates</h3>
+                <p>We continuously update our scripts to keep up with the latest trends and changes.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="popup" id="popup">
-        <h2 id="popupTitle">Script Title</h2>
-        <p id="popupDescription">Script Description</p>
-        <button onclick="copyToClipboard()">Copy</button>
-        <button class="back-button" onclick="hidePopup()">Go Back</button>
-        <iframe id="popupVideo" src="" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="footer-text">© 2024 Shadow Slime. Domain provided by GitHub.</div>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <p>"Shadow Scripts has completely transformed my gameplay. did i say it right?"</p>
+                <h3>- SnoppDog</h3>
+            </div>
+        </div>
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <p>"Tf is shadow scripts?"</p>
+                <h3>- D6ad_skiis</h3>
+            </div>
+        </div>
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <p>"Zzzzzzzz"</p>
+                <h3>- Zackman013</h3>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        let currentScriptContent = '';
+    <!-- Developers Section -->
+    <section id="developers" class="developers">
+        <h2>Meet Our Developers</h2>
+        <div class="developer-card">
+            <img src="https://via.placeholder.com/150" alt="Shadow Slime">
+            <h3>Shadow Slime</h3>
+            <p>Owner of shadow Scripts, Lead developer</p>
+        </div>
+        <div class="developer-card">
+            <img src="https://via.placeholder.com/150" alt="Lazyman">
+            <h3>Golde Soul</h3>
+            <p>The guy that watches me code and do nothing</p>
+        </div>
+    </section>
 
-        function searchScripts() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let resultItems = document.querySelectorAll('.result-item');
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need support, feel free to reach out to us!</p>
+        <a href="mailto:shadowscriptsroblox@gmail.com" class="contact-button">Email Us</a>
+    </section>
 
-            resultItems.forEach(item => {
-                let title = item.querySelector('h2').innerText.toLowerCase();
-                let description = item.querySelector('p').innerText.toLowerCase();
-                if (title.includes(input) || description.includes(input)) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <h2>What are you waiting for?</h2>
+        <p>Jump right into the world of Shadow Scripts and elevate your Roblox experience!</p>
+        <a href="pages/scripts.html" class="cta-button">Get Started</a>
+    </section>
 
-        function showPopup(title, description, scriptContentId, videoUrl = '') {
-            currentScriptContent = document.getElementById(scriptContentId).textContent;
-            document.getElementById('popupTitle').innerText = title;
-            document.getElementById('popupDescription').innerText = description;
-            document.getElementById('popup').style.display = 'block';
-
-            let popupVideo = document.getElementById('popupVideo');
-            if (videoUrl) {
-                popupVideo.src = videoUrl;
-                popupVideo.style.display = 'block';
-            } else {
-                popupVideo.style.display = 'none';
-            }
-        }
-
-        function hidePopup() {
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('popupVideo').src = '';
-        }
-
-        function copyToClipboard() {
-            navigator.clipboard.writeText(currentScriptContent).then(() => {
-                alert('Script copied to clipboard');
-            }, () => {
-                alert('Failed to copy script');
-            });
-        }
-    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2024 Shadow Scripts. All rights reserved.</p>
+            <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 </html>

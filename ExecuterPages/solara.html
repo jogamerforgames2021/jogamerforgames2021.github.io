@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solara - Shadow Scripts</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/tabs.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>Shadow Scripts</h1>
+            <div>
+                <a href="../index.html">Home</a>
+                <a href="../pages/scripts.html">Scripts</a>
+                <a href="../pages/executors.html" class="active">Executors</a>
+                <a href="../pages/options.html">Options</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header>
+        Solara
+        <div class="header-background"></div>
+    </header>
+
+    <div class="container">
+        <div class="script-container">
+            <h2>Solara</h2>
+            <p>Solara is a free Roblox executor that provides Level 3 permissions.</p>
+            <button onclick="window.open('https://discord.com/invite/realsolara', '_blank')">Discord Server</button>
+            <button onclick="window.open('../Files/Download/SolaraB2.zip', '_blank')">Download</button>
+            <iframe src="https://www.youtube.com/embed/gMIqJDHyB_I" frameborder="0" allowfullscreen></iframe>
+            <p>!?Changelog?!</p>
+            <textarea readonly>
+                2.44
+                Updated for version-3243b6d003cf4642
+
+                Change Log 6/27 (2.43)
+                Updated for version-1088f3c8e4a44cc7 again because execution broke 
+                ( I swear I tested executing before pushing ,I'm not that stupid 🥺 )
+
+                Change Log 6/27 (2.42)
+                Updated for version-1088f3c8e4a44cc7
+
+                Change Log 6/21 #2 (2.41)
+                actually fixed both Luarmor and Enviornment this time
+
+                i ran someones whitelisted script, no bans, no kicks,
+                 runs right out the box! please dont kill me 😦
+                the problem this time was that global variables were not persisting
+                 across environments and not changing across environments
+
+                Change Log 6/21
+                Fixed Luarmor
+                Fixed Environment again
+            </textarea>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-text">&copy; 2024 Shadow Scripts. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyScript() {
+            const scriptText = document.querySelector('textarea').value;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                alert('Changelog copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy changelog: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

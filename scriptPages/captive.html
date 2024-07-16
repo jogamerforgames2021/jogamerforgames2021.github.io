@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captive Script - Shadow Scripts</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/tabs.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>Shadow Scripts</h1>
+            <div>
+                <a href="../index.html">Home</a>
+                <a href="../pages/scripts.html" class="active"> Scripts</a>
+                <a href="../pages/executors.html">Executors</a>
+                <a href="../pages/options.html">Options</a>
+            </div>
+        </div>
+    </nav>
+    
+    <header>
+        Captive Script
+        <div class="header-background"></div>
+    </header>
+
+    <div class="container">
+        <div class="script-container">
+            <h2>Captive Script</h2>
+            <p>Boost your Captive gameplay with this script! Features include:</p>
+            <ul>
+                <li>ESP to Beast</li>
+                <li>ESP to Players</li>
+                <li>ESP to Computers</li>
+                <li>ESP to Freezing Pots</li>
+                <li>ESP to Escape Doors</li>
+                <li>Fly</li>
+                <li>Walkspeed</li>
+                <li>FOV (Field of View)</li>
+            </ul>
+            <textarea readonly>
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowScripts4Roblox/PROTECTEDLUA/main/Library/Vynixu'sLib.lua"))()
+            </textarea>
+            <button onclick="copyScript()">Copy Script</button>
+            <button onclick="location.href='../pages/scripts.html'">Back to Scripts</button>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-text">&copy; 2024 Shadow Scripts. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyScript() {
+            const scriptText = document.querySelector('textarea').value;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                alert('Script copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy script: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
