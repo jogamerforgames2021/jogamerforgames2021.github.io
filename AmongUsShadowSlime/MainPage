@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Installer</title>
+    <style>
+        :root {
+            --pink: hsl(338, 70%, 55%);
+            --teal: hsl(183, 70%, 62%);
+            --white: hsl(334, 7%, 95%);
+        }
+        
+        svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+         width: 100%;
+         height: 100%;
+		box-sizing: border-box;
+		display: block;
+		background-color: purple;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.86), #240027);
+	    }
+
+        body {
+            background: hsl(224, 32%, 12%);
+            background-image: conic-gradient(
+                from 0deg at 50% 50%,
+                blue,
+                purple,
+                purple,
+                blue
+            );
+            background-blend-mode: multiply;
+            min-block-size: 100dvh;
+            display: grid;
+            place-items: center;
+            overflow: hidden; /* Prevents scrolling */
+            opacity: 0; /* Initial opacity for fade-in */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .title {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--white);
+            text-shadow: 0 0 10px var(--pink);
+        }
+
+        .description {
+            position: absolute;
+            top: 80px;
+            text-align: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            max-width: 80%;
+            text-shadow: 0 0 5px var(--pink);
+        }
+
+        .status-text {
+            position: absolute;
+            bottom: 120px;
+            text-align: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px var(--pink);
+            opacity: 0; /* Initial opacity for fade-in */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+            transition: opacity 0.5s ease;
+        }
+
+        .card {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    transition: transform 200ms ease-in-out;
+    perspective: 500px; /* Perspective for the 3D effect */
+    box-shadow: 0 0 20px var(--pink), 0 0 30px var(--pink); /* Glow effect */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.card img {
+    width: 390px;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.5s ease; /* Smooth transition for the image */
+}
+
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Social media and download button styles */
+        .social {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .social img,
+        .download-btn {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            margin: 0 10px;
+            filter: brightness(0) invert(1); /* Makes the icons white */
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .social img:hover,
+        .download-btn:hover {
+            filter: brightness(1) invert(0); /* Makes the icons colorful on hover */
+            transform: scale(1.1); /* Slightly enlarge on hover */
+            box-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink); /* Glow effect on hover */
+        }
+
+        /* Adding the download button with icon */
+        .download-btn {
+            background: transparent; /* No background */
+            border: none; /* No border */
+            filter: brightness(0) invert(1);
+        }
+
+        /* 3D rotation effect */
+        .card-container {
+            position: relative;
+            display: grid;
+            grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+            width: 400px;
+            height: 400px;
+            perspective: 500px;
+        }
+
+        .pre-container {
+            position: relative;
+            display: grid;
+            grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+            grid-area: 1 / 1 / 4 / 4; /* Covers the entire grid */
+            transition: transform 200ms ease-in-out;
+        }
+
+        .pre-container > div {
+            z-index: 10;
+            position: absolute;
+        }
+
+        .pre-container > div:hover ~ .card {
+            --rotateX: -25deg; /* Rotate on hover */
+            --rotateY: 25deg;
+        }
+
+        /* Hide the default scrollbar */
+        ::-webkit-scrollbar {
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+		<defs>
+			<linearGradient id="bg">
+				<stop offset="0%" style="stop-color:rgba(97, 20, 20, 0.041)"></stop>
+				<stop offset="50%" style="stop-color:rgba(56, 8, 78, 0.6)"></stop>
+				<stop offset="100%" style="stop-color:rgba(59, 0, 15, 0.082)"></stop>
+			</linearGradient>
+			<path id="wave" fill="url(#bg)" d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
+	s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z" />
+		</defs>
+		<g>
+			<use xlink:href='#wave' opacity=".3">
+				<animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="translate"
+          dur="10s"
+          calcMode="spline"
+          values="270 230; -334 180; 270 230"
+          keyTimes="0; .5; 1"
+          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+          repeatCount="indefinite" />
+			</use>
+			<use xlink:href='#wave' opacity=".6">
+				<animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="translate"
+          dur="8s"
+          calcMode="spline"
+          values="-270 230;243 220;-270 230"
+          keyTimes="0; .6; 1"
+          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+          repeatCount="indefinite" />
+			</use>
+			<use xlink:href='#wave' opacty=".9">
+				<animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="translate"
+          dur="6s"
+          calcMode="spline"
+          values="0 230;-140 200;0 230"
+          keyTimes="0; .4; 1"
+          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+          repeatCount="indefinite" />
+			</use>
+		</g>
+	</svg>
+    
+    <div class="title">Among Us Game Installer</div>
+    <div class="description">Download and install the Among Us game easily with our installer!</div>
+
+    <div class="status-text" id="statusText">Loading version info...</div>
+
+    <!-- Card container -->
+    <div class="card-container">
+        <div class="card" id="card">
+            <!-- Installer image inside the card -->
+            <img src="https://i.ibb.co/WgYqGLp/window.png" alt="Installer Image">
+        </div>
+    </div>
+
+    <!-- Social media section -->
+    <div class="social">
+        <a href="https://www.youtube.com/@ShadowSlimeDEV" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+        </a>
+        <a href="https://discord.com/invite/7Vvj2vpT6S" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord">
+        </a>
+	    <a href="https://store.steampowered.com/app/945360/Among_Us/" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/steam.png" alt="Steam"> <!-- New Steam button -->
+        </a>
+        <a href="https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/Among.Us.ShadowSlime.zip" target="_blank"> <!-- Replace with actual download link -->
+            <img class="download-btn" src="https://img.icons8.com/ios-filled/50/ffffff/download.png" alt="Download">
+        </a>
+        <a href="https://jogamerforgames2021.github.io/AmongUsShadowSlime/helpPage.html" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/help.png" alt="Help"> <!-- New Steam button -->
+        </a>
+    </div>
+
+    <script>
+        const card = document.getElementById("card");
+        const statusText = document.getElementById("statusText");
+
+        // Fetch version information from the JSON file
+        fetch("https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/AppDetail.json")
+            .then(response => response.json())
+            .then(data => {
+                const { repository_version, uploaded_version } = data;
+                const currentVersion = repository_version; // Repository version
+                const uploadedVersion = uploaded_version; // Uploaded version
+
+                // Display version information
+                statusText.textContent = `Current Version: ${currentVersion} | Uploaded Version: ${uploadedVersion}`;
+                
+                // Check if the game is outdated
+                if (currentVersion !== uploadedVersion) {
+                    statusText.textContent += " (OUTDATED)";
+                    statusText.style.color = 'var(--pink)';
+                } else {
+                    statusText.textContent += " (UP TO DATE)";
+                    statusText.style.color = 'lightgreen';
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching version information:", error);
+                statusText.textContent = "Error loading version info.";
+            });
+
+        document.addEventListener("mousemove", (e) => {
+            rotateElement(e, card);
+        });
+
+        function rotateElement(event, element) {
+            const x = event.clientX;
+            const y = event.clientY;
+            const middleX = window.innerWidth / 2;
+            const middleY = window.innerHeight / 2;
+
+            // Get offset from middle as a percentage
+            const offsetX = ((x - middleX) / middleX) * 25; // Adjust rotation sensitivity
+            const offsetY = ((y - middleY) / middleY) * 25; // Adjust rotation sensitivity
+
+            // Set rotation
+            element.style.setProperty("--rotateX", `${offsetY}deg`);
+            element.style.setProperty("--rotateY", `${-offsetX}deg`);
+            element.style.transform = `rotateY(${offsetX}deg) rotateX(${offsetY}deg)`;
+        }
+
+        // Fade out effect for the screen
+        function fadeOut() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                // Optionally hide or redirect after fading out
+            }, 1000); // Delay for fade-out effect
+        }
+        
+        // Call fadeOut() whenever you want to hide the screen
+        // fadeOut(); // Uncomment to test fade-out
+    </script>
+
+</body>
+</html>
