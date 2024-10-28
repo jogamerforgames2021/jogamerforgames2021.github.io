@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Installer</title>
+    <meta name="description" content="Download and install the Among Us game easily with our installer. Stay up to date with the latest version.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <title>Among Us Launcher</title>
     <style>
         :root {
             --pink: hsl(338, 70%, 55%);
             --teal: hsl(183, 70%, 62%);
             --white: hsl(334, 7%, 95%);
+            --purple: #9b59b6;
+            --gray: #bdc3c7;
+            --hover-bright: brightness(1.2);
         }
-        
+
         svg {
 		position: absolute;
 		top: 0;
@@ -36,9 +42,10 @@
             min-block-size: 100dvh;
             display: grid;
             place-items: center;
-            overflow: hidden; /* Prevents scrolling */
-            opacity: 0; /* Initial opacity for fade-in */
-            animation: fadeIn 1s forwards; /* Fade-in effect */
+            overflow: hidden; 
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
+            font-family: 'Poppins', sans-serif; 
         }
 
         @keyframes fadeIn {
@@ -53,6 +60,8 @@
             font-size: 2.5rem;
             color: var(--white);
             text-shadow: 0 0 10px var(--pink);
+            z-index: 20; 
+            white-space: nowrap; 
         }
 
         .description {
@@ -63,95 +72,136 @@
             font-size: 1.2rem;
             max-width: 80%;
             text-shadow: 0 0 5px var(--pink);
+            z-index: 20; 
+            white-space: nowrap; 
+        }
+        .small-text {
+            font-size: 0.8em; 
+            line-height: 0.01; 
+            margin-top: 5px; 
         }
 
         .status-text {
             position: absolute;
-            bottom: 120px;
+            border: 2px solid rgba(255, 20, 145, 0.205); 
+            padding: 5px; 
+            border-radius: 15px; 
+            bottom: 120px; 
+            left: 50%; 
+            transform: translateX(-50%); 
             text-align: center;
             color: var(--white);
             font-size: 1.2rem;
-            text-shadow: 0 0 5px var(--pink);
-            opacity: 0; /* Initial opacity for fade-in */
-            animation: fadeIn 1s forwards; /* Fade-in effect */
+            text-shadow: 
+            0 0 5px var(--pink),  
+            0 0 10px var(--pink), 
+            0 0 15px var(--pink); 
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
             transition: opacity 0.5s ease;
+            z-index: 20; 
+            white-space: nowrap; 
         }
 
         .card {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    border-radius: 20px;
-    transform-style: preserve-3d;
-    transition: transform 200ms ease-in-out;
-    perspective: 500px; /* Perspective for the 3D effect */
-    box-shadow: 0 0 20px var(--pink), 0 0 30px var(--pink); /* Glow effect */
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-}
-
-.card img {
-    width: 390px;
-    height: 390px;
-    object-fit: cover;
-    border-radius: 20px;
-    transition: transform 0.5s ease; /* Smooth transition for the image */
-}
-
-
-        .card:hover img {
-            transform: scale(1.05);
+            max-height: 400px; 
+            aspect-ratio: 16 / 9; 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 20px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out; 
+            box-shadow: 0 0 20px var(--pink), 0 0 30px var(--pink); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
         }
 
-        /* Social media and download button styles */
+        .card img {
+            width: 99%; 
+            height: 99%; 
+            border-radius: 20px; 
+            transform-style: preserve-3d; 
+            transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .card:hover img {
+            transform: scale(1.05); 
+            box-shadow: 0 0 60px var(--pink), 0 0 100px var(--pink); 
+        }
+
         .social {
             position: absolute;
             bottom: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: row; 
+            justify-content: center; 
+            gap: 15px;
             width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 21; 
         }
 
-        .social img,
+        .social img {
+            width: 50px; 
+            height: 50px; 
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 15px; 
+            border-radius: 10px; 
+            background-color: rgba(155, 89, 182, 0.2); 
+            z-index: 21; 
+        }
+
+        .social img:hover {
+            filter: brightness(1) invert(0); 
+            transform: scale(1.1); 
+            box-shadow: 0 0 15px var(--pink), 0 0 25px var(--pink); 
+            z-index: 21; 
+        }
         .download-btn {
             width: 40px;
             height: 40px;
             cursor: pointer;
             margin: 0 10px;
-            filter: brightness(0) invert(1); /* Makes the icons white */
+            filter: brightness(0) invert(1); 
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .social img:hover,
         .download-btn:hover {
-            filter: brightness(1) invert(0); /* Makes the icons colorful on hover */
-            transform: scale(1.1); /* Slightly enlarge on hover */
-            box-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink); /* Glow effect on hover */
+            filter: brightness(1) invert(0); 
+            transform: scale(1.1); 
+            box-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink); 
         }
 
-        /* Adding the download button with icon */
         .download-btn {
-            background: transparent; /* No background */
-            border: none; /* No border */
+            background: transparent; 
+            border: none; 
             filter: brightness(0) invert(1);
         }
 
-        /* 3D rotation effect */
         .card-container {
-            position: relative;
-            display: grid;
-            grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-            width: 400px;
-            height: 400px;
-            perspective: 500px;
-        }
+        position: relative;
+        width: 80vw; 
+        height: 50vh; 
+        max-width: 600px; 
+        max-height: 400px; 
+        perspective: 1000px; 
+    }
 
         .pre-container {
             position: relative;
             display: grid;
             grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-            grid-area: 1 / 1 / 4 / 4; /* Covers the entire grid */
+            grid-area: 1 / 1 / 4 / 4; 
             transition: transform 200ms ease-in-out;
         }
 
@@ -161,14 +211,96 @@
         }
 
         .pre-container > div:hover ~ .card {
-            --rotateX: -25deg; /* Rotate on hover */
+            --rotateX: -25deg; 
             --rotateY: 25deg;
         }
 
-        /* Hide the default scrollbar */
         ::-webkit-scrollbar {
             display: none; 
         }
+
+        .buttons {
+            position: absolute;
+            bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1rem; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: var(--white);
+            background-color: var(--purple);
+            transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            max-width: 300px;
+            height: 80px; 
+        }
+
+        .button:hover {
+            transform: scale(1.05); 
+            filter: var(--hover-bright); 
+            box-shadow: 0 0 20px var(--pink), 0 0 30px var(--purple); 
+        }
+
+        .download-launcher {
+            background-color: var(--purple);
+            animation: pulse 2s infinite;
+        }
+
+        .download-amongus {
+            background-color: var(--gray);
+            color: black;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            filter: var(--hover-bright);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @media (max-width: 400px) {
+            .title {
+                font-size: 2rem; 
+            }
+
+            .description {
+                font-size: 1rem; 
+            }
+
+            .status-text {
+                font-size: 1rem; 
+            }
+
+            .social {
+                gap: 10px; 
+            }
+
+            .button {
+                font-size: 0.9rem; 
+                padding: 10px 20px; 
+            }
+
+            .card {
+                height: 300px; 
+            }
+            .card img {
+                height: auto; 
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -222,7 +354,7 @@
 			</use>
 		</g>
 	</svg>
-    
+
     <div class="title">Among Us Game Installer</div>
     <div class="description">Download and install the Among Us game easily with our installer!</div>
 
@@ -236,7 +368,6 @@
         </div>
     </div>
 
-    <!-- Social media section -->
     <div class="social">
         <a href="https://www.youtube.com/@ShadowSlimeDEV" target="_blank">
             <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
@@ -244,33 +375,52 @@
         <a href="https://discord.com/invite/7Vvj2vpT6S" target="_blank">
             <img src="https://img.icons8.com/ios-filled/50/ffffff/discord-logo.png" alt="Discord">
         </a>
-	    <a href="https://store.steampowered.com/app/945360/Among_Us/" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/steam.png" alt="Steam"> <!-- New Steam button -->
-        </a>
-        <a href="https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/Among.Us.ShadowSlime.zip" target="_blank"> <!-- Replace with actual download link -->
-            <img class="download-btn" src="https://img.icons8.com/ios-filled/50/ffffff/download.png" alt="Download">
+        <a href="https://store.steampowered.com/app/945360/Among_Us/" target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/steam.png" alt="Steam">
         </a>
         <a href="https://jogamerforgames2021.github.io/AmongUsShadowSlime/helpPage.html" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/help.png" alt="Help"> <!-- New Steam button -->
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/help.png" alt="Help">
         </a>
+
+        <button class="button download-launcher" onclick="window.location.href='https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/Among.Us.ShadowSlime.zip'">
+            Download Launcher
+        </button>
+        <button id="amongUsDownloadBtn" class="button download-amongus">
+            <span>Download Among Us (Version)</span>
+            <span class="small-text">Don't need launcher?</span>
+        </button>        
     </div>
 
     <script>
-        const card = document.getElementById("card");
+        const card = document.querySelector(".card");
         const statusText = document.getElementById("statusText");
+        const amongUsDownloadBtn = document.getElementById("amongUsDownloadBtn");
 
-        // Fetch version information from the JSON file
+        document.addEventListener("contextmenu", (event) => {
+            event.preventDefault();
+        });
+
+        fetch("https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/Version.txt")
+            .then(response => response.text())
+            .then(version => {
+                amongUsDownloadBtn.innerHTML = `<span class="small-text">Don't need launcher?</span><br>Download Among Us (${version.trim()}) Directly`;
+                amongUsDownloadBtn.onclick = () => {
+                    window.location.href = "https://www.dropbox.com/scl/fo/exm6gldgju7ad2xvg5zma/AMbpjSFHEjdNW9i22HGksg0?rlkey=quybmdqt69klke2xcwhiba75u&st=jr8ahi3o&dl=1";
+                };
+            })
+            .catch(error => {
+                console.error("Error fetching version information:", error);
+            });
+
         fetch("https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/AppDetail.json")
             .then(response => response.json())
             .then(data => {
                 const { repository_version, uploaded_version } = data;
-                const currentVersion = repository_version; // Repository version
-                const uploadedVersion = uploaded_version; // Uploaded version
+                const currentVersion = repository_version; 
+                const uploadedVersion = uploaded_version; 
 
-                // Display version information
                 statusText.textContent = `Current Version: ${currentVersion} | Uploaded Version: ${uploadedVersion}`;
-                
-                // Check if the game is outdated
+
                 if (currentVersion !== uploadedVersion) {
                     statusText.textContent += " (OUTDATED)";
                     statusText.style.color = 'var(--pink)';
@@ -294,26 +444,21 @@
             const middleX = window.innerWidth / 2;
             const middleY = window.innerHeight / 2;
 
-            // Get offset from middle as a percentage
-            const offsetX = ((x - middleX) / middleX) * 25; // Adjust rotation sensitivity
-            const offsetY = ((y - middleY) / middleY) * 25; // Adjust rotation sensitivity
+            const offsetX = ((x - middleX) / middleX) * 15; 
+            const offsetY = ((y - middleY) / middleY) * 15; 
 
-            // Set rotation
-            element.style.setProperty("--rotateX", `${offsetY}deg`);
-            element.style.setProperty("--rotateY", `${-offsetX}deg`);
-            element.style.transform = `rotateY(${offsetX}deg) rotateX(${offsetY}deg)`;
+            element.style.setProperty("--rotateX", `${-Math.min(Math.max(offsetY, -20), 20)}deg`); 
+            element.style.setProperty("--rotateY", `${Math.min(Math.max(offsetX, -20), 20)}deg`); 
+            element.style.transform = `rotateY(${offsetX}deg) rotateX(${-offsetY}deg)`; 
         }
 
-        // Fade out effect for the screen
         function fadeOut() {
             document.body.style.opacity = '0';
             setTimeout(() => {
-                // Optionally hide or redirect after fading out
-            }, 1000); // Delay for fade-out effect
+
+            }, 1000); 
         }
-        
-        // Call fadeOut() whenever you want to hide the screen
-        // fadeOut(); // Uncomment to test fade-out
+
     </script>
 
 </body>
