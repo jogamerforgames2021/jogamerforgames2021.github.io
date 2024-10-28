@@ -390,8 +390,14 @@
             <span class="small-text">Don't need launcher?</span>
         </button>        
     </div>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9T9PLTWZE"></script>
     <script>
+         window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-W9T9PLTWZE');
+        
         const card = document.querySelector(".card");
         const statusText = document.getElementById("statusText");
         const amongUsDownloadBtn = document.getElementById("amongUsDownloadBtn");
