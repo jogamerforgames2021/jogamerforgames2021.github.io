@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Feedback Form</title>
+    <style>
+        :root {
+            --pink: hsl(338, 70%, 55%);
+            --teal: hsl(183, 70%, 62%);
+            --white: hsl(334, 7%, 95%);
+            --purple: #9b59b6;
+            --gray: #bdc3c7;
+            --hover-bright: brightness(1.2);
+        }
+        /* General reset and style */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: hsl(224, 32%, 12%);
+            background-image: conic-gradient(
+                from 0deg at 50% 50%,
+                blue,
+                purple,
+                purple,
+                blue
+            );
+            background-blend-mode: multiply;
+            min-block-size: 100dvh;
+            display: grid;
+            place-items: center;
+            overflow: hidden; 
+            opacity: 0; 
+            animation: fadeIn 2s forwards; 
+            font-family: 'Poppins', sans-serif; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+         width: 100%;
+         height: 100%;
+		box-sizing: border-box;
+		display: block;
+		background-color: purple;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.86), #240027);
+	    }
+        /* Card style for feedback box */
+        .feedback-container {
+            width: 100%;
+            max-width: 400px;
+            background: #6f00ff;
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Title */
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+            color: #ffffff; 
+            text-align: center;
+        }
+
+        /* Input styles */
+        .form-group {
+            margin-bottom: 1.2em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            color: #ffffff; 
+            font-weight: bold;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: #ffffff; 
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            padding: 0.8em;
+            background-color: #ffffff; 
+            border: none;
+            color: #6f00ff; 
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e0e0e0; 
+        }
+
+        .success-message, .error-message {
+            display: none;
+            padding: 1em;
+            border-radius: 6px;
+            margin-top: 1em;
+            text-align: center;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            color: #333; /* Text color */
+            padding: 10px 15px; /* Padding around the text */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Remove underline from link */
+            font-size: 1em; /* Font size */
+            transition: background-color 0.2s; /* Smooth background change on hover */
+            z-index: 2; /* Ensure button is above other elements */
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 1); /* Solid white on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+		<defs>
+			<linearGradient id="bg">
+				<stop offset="0%" style="stop-color:rgba(40, 20, 97, 0.041)"></stop>
+				<stop offset="50%" style="stop-color:rgba(27, 8, 78, 0.6)"></stop>
+				<stop offset="100%" style="stop-color:rgba(59, 0, 15, 0.082)"></stop>
+			</linearGradient>
+			<path id="wave" fill="url(#bg)" d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
+	s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z" />
+		</defs>
+		<g>
+			<use xlink:href='#wave' opacity=".3">
+				<animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="translate"
+          dur="10s"
+          calcMode="spline"
+          values="270 230; -334 180; 270 230"
+          keyTimes="0; .5; 1"
+          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+          repeatCount="indefinite" />
+			</use>
+			<use xlink:href='#wave' opacity=".6">
+				<animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="translate"
+          dur="8s"
+          calcMode="spline"
+          values="-270 230;243 220;-270 230"
+          keyTimes="0; .6; 1"
+          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+          repeatCount="indefinite" />
+			</use>
+			<use xlink:href='#wave' opacty=".9">
+				<animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="translate"
+          dur="6s"
+          calcMode="spline"
+          values="0 230;-140 200;0 230"
+          keyTimes="0; .4; 1"
+          keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
+          repeatCount="indefinite" />
+			</use>
+		</g>
+	</svg>
+    <a href="https://jogamerforgames2021.github.io/AmongUsShadowSlime/MainPage.html" class="back-button">Back</a>
+
+    <div class="feedback-container">
+        <h1>Feedback Form</h1>
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="name">Name (optional)</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="feedback">Your Feedback</label>
+                <textarea id="feedback" placeholder="Write your feedback here" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+        <div class="success-message" id="successMessage">Thank you! Your feedback was sent successfully.</div>
+        <div class="error-message" id="errorMessage">Oops! Something went wrong. Please try again.</div>
+    </div>
+
+    <script>
+        const form = document.getElementById('feedbackForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Get form data
+            const name = document.getElementById('name').value.trim() || "Website";
+            const feedback = document.getElementById('feedback').value.trim();
+
+            // Check if feedback is empty
+            if (!feedback) {
+                errorMessage.textContent = "Please enter your feedback.";
+                errorMessage.style.display = 'block';
+                return;
+            } else {
+                errorMessage.style.display = 'none';
+            }
+
+            // Send data to Discord webhook
+            try {
+                const response = await fetch("https://discord.com/api/webhooks/1303420048022442035/hVIj-EJ77lVAfbO4MggQG1WEEm5aWxco3tcOEWgdhaaCoNRufEHbRrFERq6iD9aEqcur", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: name,
+                        content: feedback
+                    })
+                });
+
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
