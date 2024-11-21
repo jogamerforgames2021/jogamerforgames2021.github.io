@@ -41,11 +41,29 @@
             background-blend-mode: multiply;
             min-block-size: 100dvh;
             display: grid;
+            position: relative;
             place-items: center;
             overflow: hidden; 
             opacity: 0; 
-            animation: fadeIn 1s forwards; 
+            animation: fadeIn 2s forwards; 
             font-family: 'Poppins', sans-serif; 
+        }
+        body.blur {
+            position: relative;
+            filter: blur(25px);
+            pointer-events: none;
+        }
+        body.blur::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.267);
+            filter: blur(25px);
+            pointer-events: none;
+            z-index: 9999;
         }
 
         @keyframes fadeIn {
@@ -395,80 +413,99 @@
     </div>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9T9PLTWZE"></script>
     <script>
-         window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
+    
         gtag('config', 'G-W9T9PLTWZE');
         
         const card = document.querySelector(".card");
         const statusText = document.getElementById("statusText");
         const amongUsDownloadBtn = document.getElementById("amongUsDownloadBtn");
-
+    
+        let isOutdated = false;
+    
         document.addEventListener("contextmenu", (event) => {
             event.preventDefault();
         });
-
+    
         fetch("https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/Version.txt")
             .then(response => response.text())
             .then(version => {
                 amongUsDownloadBtn.innerHTML = `<span class="small-text">Don't need launcher?</span><br>Download Among Us (${version.trim()}) Directly`;
+                
                 amongUsDownloadBtn.onclick = () => {
+                if (isOutdated) {
+                    document.body.classList.add("blur");
+                    setTimeout(() => {
+                        document.body.classList.add("active");
+                    }, 50);
+
+                    setTimeout(() => {
+                        const userConfirmed = confirm("This version of Among Us is outdated. Would you still like to download it?");
+                        document.body.classList.remove("active");
+                        document.body.classList.remove("blur");
+                        if (!userConfirmed) {
+                            return;
+                        }
+                        window.location.href = "https://www.dropbox.com/scl/fo/exm6gldgju7ad2xvg5zma/AMbpjSFHEjdNW9i22HGksg0?rlkey=quybmdqt69klke2xcwhiba75u&st=jr8ahi3o&dl=1";
+                    }, 100);
+                } else {
                     window.location.href = "https://www.dropbox.com/scl/fo/exm6gldgju7ad2xvg5zma/AMbpjSFHEjdNW9i22HGksg0?rlkey=quybmdqt69klke2xcwhiba75u&st=jr8ahi3o&dl=1";
-                };
+                }
+            };
+
+                
             })
             .catch(error => {
                 console.error("Error fetching version information:", error);
             });
-
         fetch("https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/AppDetail.json")
             .then(response => response.json())
             .then(data => {
                 const { repository_version, uploaded_version } = data;
                 const currentVersion = repository_version; 
                 const uploadedVersion = uploaded_version; 
-
+    
                 statusText.textContent = `Current Version: ${currentVersion} | Uploaded Version: ${uploadedVersion}`;
-
+    
                 if (currentVersion !== uploadedVersion) {
                     statusText.textContent += " (OUTDATED)";
                     statusText.style.color = 'var(--pink)';
+                    isOutdated = true;
                 } else {
                     statusText.textContent += " (UP TO DATE)";
                     statusText.style.color = 'lightgreen';
+                    isOutdated = false;
                 }
             })
             .catch(error => {
                 console.error("Error fetching version information:", error);
                 statusText.textContent = "Error loading version info.";
             });
-
         document.addEventListener("mousemove", (e) => {
             rotateElement(e, card);
         });
-
         function rotateElement(event, element) {
             const x = event.clientX;
             const y = event.clientY;
             const middleX = window.innerWidth / 2;
             const middleY = window.innerHeight / 2;
-
+    
             const offsetX = ((x - middleX) / middleX) * 15; 
             const offsetY = ((y - middleY) / middleY) * 15; 
-
+    
             element.style.setProperty("--rotateX", `${-Math.min(Math.max(offsetY, -20), 20)}deg`); 
             element.style.setProperty("--rotateY", `${Math.min(Math.max(offsetX, -20), 20)}deg`); 
             element.style.transform = `rotateY(${offsetX}deg) rotateX(${-offsetY}deg)`; 
         }
-
+    
         function fadeOut() {
             document.body.style.opacity = '0';
             setTimeout(() => {
-
+    
             }, 1000); 
         }
-
     </script>
-
 </body>
 </html>
