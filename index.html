@@ -3,124 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadow Scripts - Home</title>
-    <link rel="stylesheet" href="styles/home.css">
-    <link rel="stylesheet" href="styles/tabs.css">
-    
+    <title>About Me - Shadow Slime</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            transform: translateY(-20px);
+            animation: slideIn 1s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: 600;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+        .info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            animation: popIn 1.5s ease-in-out;
+        }
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        p {
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .socials a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #ffcc00;
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.4);
+        }
+        .socials a:hover {
+            background: #e6b800;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <h1>Shadow Scripts</h1>
-            <div>
-                <a href="index.html" class="active">Home</a>
-                <a href="pages/scripts.html"> Scripts</a>
-                <a href="pages/executors.html">Executors</a>
-                <a href="pages/options.html">Options</a>
-            </div>
+    <div class="container">
+        <h1>Shadow Slime</h1>
+        <div class="info">
+            <p>🕹️ Solo Game Dev | 📖 Otaku | 🎮 Gamer: Roblox, Minecraft & more</p>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Welcome to Shadow Scripts</h1>
-            <p>Your ultimate destination for the best scripts in Roblox.</p>
-            <a href="pages/scripts.html" class="cta-button">Explore Scripts</a>
+        <div class="info">
+            <p>💻 Building worlds, watching stories, and leveling up 🚀</p>
         </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Us</h2>
-        <p>Shadow Scripts is dedicated to providing high-quality, innovative scripts for enhancing your Roblox gaming experience. Our team is passionate about delivering the best tools and scripts for the community.</p>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <h2>Our Features</h2>
-        <div class="feature">
-            <div class="feature-content">
-                <h3>Powerful Scripts</h3>
-                <p>Our scripts are designed to enhance your gameplay with various features and tools.</p>
-            </div>
+        <div class="info">
+            <p>🔥 Passionate about game development and anime storytelling. Creating immersive experiences and pushing the limits of creativity.</p>
         </div>
-        <div class="feature">
-            <div class="feature-content">
-                <h3>User-Friendly Interface</h3>
-                <p>Easy to use and navigate, ensuring a seamless experience.</p>
-            </div>
+        <div class="socials">
+            <a href="https://www.instagram.com/themysticpuddles/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://x.com/ShadowSlimeDev" target="_blank"><i class="fab fa-twitter"></i> X (Twitter)</a>
+            <a href="https://www.tiktok.com/@the_shadowslime" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="#"><i class="fab fa-discord"></i> Discord: _shadowslime</a>
         </div>
-        <div class="feature">
-            <div class="feature-content">
-                <h3>Regular Updates</h3>
-                <p>We continuously update our scripts to keep up with the latest trends and changes.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <h2>What Our Users Say</h2>
-        <div class="testimonial">
-            <div class="testimonial-content">
-                <p>"Shadow Scripts has completely transformed my gameplay. did i say it right?"</p>
-                <h3>- SnoppDog</h3>
-            </div>
-        </div>
-        <div class="testimonial">
-            <div class="testimonial-content">
-                <p>"Tf is shadow scripts?"</p>
-                <h3>- D6ad_skiis</h3>
-            </div>
-        </div>
-        <div class="testimonial">
-            <div class="testimonial-content">
-                <p>"Zzzzzzzz"</p>
-                <h3>- Zackman013</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- Developers Section -->
-    <section id="developers" class="developers">
-        <h2>Meet Our Developers</h2>
-        <div class="developer-card">
-            <img src="https://via.placeholder.com/150" alt="Shadow Slime">
-            <h3>Shadow Slime</h3>
-            <p>Owner of shadow Scripts, Lead developer</p>
-        </div>
-        <div class="developer-card">
-            <img src="https://via.placeholder.com/150" alt="Lazyman">
-            <h3>Golde Soul</h3>
-            <p>The guy that watches me code and do nothing</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or need support, feel free to reach out to us!</p>
-        <a href="mailto:shadowscriptsroblox@gmail.com" class="contact-button">Email Us</a>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="cta-section">
-        <h2>What are you waiting for?</h2>
-        <p>Jump right into the world of Shadow Scripts and elevate your Roblox experience!</p>
-        <a href="pages/scripts.html" class="cta-button">Get Started</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2024 Shadow Scripts. All rights reserved.</p>
-            <ul>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-            </ul>
-        </div>
-    </footer>
+    </div>
 </body>
 </html>
