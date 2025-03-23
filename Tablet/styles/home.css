@@ -1,0 +1,364 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #E0E0E0;
+    background-color: #121212;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+nav h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Navigation Links */
+nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #6966ff;
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: #6966ff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-out;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-8569.jpg?size=626&ext=jpg&ga=GA1.1.1518270500.1717632000&semt=ais_user');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    border-radius: 15px;
+    margin: 0 20px;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: #6966ff;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #5756d1;
+    transform: scale(1.05);
+}
+
+/* About Section */
+.about {
+    padding: 50px 20px;
+    background-color: #1e1e1e;
+    text-align: center;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Features Section */
+.features {
+    padding: 50px 20px;
+    background-color: #2c2c2c;
+    text-align: center;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.feature {
+    display: inline-block;
+    width: 30%;
+    margin: 20px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform0.3s;
+}
+
+.feature
+{
+transform: rotateY(10deg);
+}
+
+.feature-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.feature h3 {
+font-size: 1.5rem;
+margin-bottom: 10px;
+}
+
+.feature p {
+font-size: 1rem;
+}
+
+/* Testimonials Section */
+.testimonials {
+padding: 50px 20px;
+background-color: #1e1e1e;
+text-align: center;
+border-radius: 15px;
+margin: 20px;
+}
+
+.testimonials h2 {
+font-size: 2rem;
+margin-bottom: 20px;
+}
+
+.testimonial {
+margin: 20px auto;
+max-width: 800px;
+background-color: #2c2c2c;
+border-radius: 15px;
+padding: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+transition: transform 0.3s, box-shadow 0.3s;
+perspective: 1000px;
+}
+
+.testimonial:hover {
+    transform: rotateY(15deg) rotateX(15deg);
+    }
+
+.testimonial-content {
+text-align: center;
+}
+
+.testimonial p {
+font-size: 1rem;
+color: #ccc;
+margin: 10px 0;
+}
+
+/* Developers Section */
+.developers {
+padding: 50px 20px;
+background-color: #2c2c2c;
+text-align: center;
+border-radius: 15px;
+margin: 20px;
+}
+
+.developers h2 {
+font-size: 2rem;
+margin-bottom: 20px;
+}
+
+.developer-card {
+display: inline-block;
+width: 30%;
+margin: 20px;
+background-color: #1e1e1e;
+border-radius: 15px;
+padding: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+transition: transform 0.3s;
+}
+
+.developer-card
+{
+transform: rotateY(10deg);
+}
+
+.developer-card img {
+border-radius: 50%;
+width: 100px;
+height: 100px;
+object-fit: cover;
+}
+
+.developer-card h3 {
+font-size: 1.25rem;
+margin-top: 10px;
+}
+
+.developer-card p {
+font-size: 1rem;
+color: #ccc;
+}
+
+/* Contact Section */
+.contact {
+padding: 50px 20px;
+background-color: #1e1e1e;
+text-align: center;
+border-radius: 15px;
+margin: 20px;
+}
+
+.contact h2 {
+font-size: 2rem;
+margin-bottom: 20px;
+}
+
+.contact p {
+font-size: 1rem;
+margin-bottom: 20px;
+}
+
+.contact-button {
+background-color: #6966ff;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 25px;
+text-decoration: none;
+font-size: 1rem;
+transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-button
+{
+background-color: #5756d1;
+transform: scale(1.05);
+}
+
+/* Call to Action Section */
+.cta-section {
+background-color: #2c2c2c;
+text-align: center;
+padding: 100px 20px;
+border-radius: 15px;
+margin: 20px;
+}
+
+.cta-section h2 {
+font-size: 2.5rem;
+color: #fff;
+margin-bottom: 30px;
+}
+
+.cta-section p {
+font-size: 1.25rem;
+margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+background: rgba(0, 0, 0, 0.7);
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+padding: 20px 0;
+color: #E0E0E0;
+}
+
+footer .container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+footer p {
+margin: 0;
+}
+
+footer ul {
+list-style: none;
+padding: 0;
+display: flex;
+}
+
+footer li {
+margin: 0 10px;
+}
+
+footer a {
+color: #f5f5f5;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+footer a
+{
+color: #6966ff;
+}
