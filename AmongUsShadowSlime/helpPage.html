@@ -3,118 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Use the Game Launcher</title>
+    <title>Shadow Slime Launcher Help</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: hsl(224, 32%, 12%);
-            color: white;
+        :root {
+            --shadow-bg: #12001a;
+            --shadow-card: rgba(34, 0, 51, 0.92);
+            --shadow-border: #2e0047;
+            --neon-pink: #ff4ecd;
+            --neon-blue: #6c5ce7;
+            --deep-purple: #2e0047;
+            --white: #f8f8fa;
+            --glass: rgba(34, 0, 51, 0.85);
+        }
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(120deg, #1a0033 0%, #2e0047 40%, #0a0a23 100%);
+            background-size: 200% 200%;
+            animation: gradientMove 16s ease-in-out infinite;
+            color: var(--white);
+            font-family: 'Inter', 'Poppins', Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            background-image: conic-gradient(
-                from 0deg at 50% 50%,
-                blue,
-                purple,
-                purple,
-                blue
-            );
-            background-blend-mode: multiply;
+            justify-content: flex-start;
+            padding-bottom: 60px;
+        }
+        @keyframes gradientMove {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
         h1 {
-            margin: 20px 0;
-            font-size: 2.5em;
+            margin: 40px 0 10px 0;
+            font-size: 2.4em;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: var(--neon-blue);
+            text-shadow: 0 0 24px var(--neon-pink), 0 0 48px var(--deep-purple);
+            letter-spacing: 2px;
+            font-weight: 900;
+            text-align: center;
         }
         h2 {
-            color: #ffdd57;
-            margin: 15px 0;
+            color: var(--neon-pink);
+            margin: 18px 0 10px 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-size: 1.3em;
+            text-shadow: 0 0 10px var(--neon-pink);
         }
-        p {
-            max-width: 600px;
-            line-height: 1.6;
-            margin: 10px auto;
+        p, li {
+            color: var(--white);
+            font-size: 1.08em;
+            line-height: 1.7;
+            font-family: 'Inter', Arial, sans-serif;
         }
         .section {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-        ol {
+            background: var(--shadow-card);
+            border: 2px solid var(--neon-blue);
+            border-radius: 18px;
+            box-shadow: 0 0 24px var(--deep-purple), 0 0 32px var(--neon-pink);
+            padding: 24px 18px;
+            margin: 22px 0;
+            max-width: 540px;
+            width: 95vw;
             text-align: left;
-            margin: 10px auto;
-            max-width: 400px;
+            backdrop-filter: blur(6px);
+        }
+        ol, ul {
+            margin: 10px 0 10px 24px;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
         }
         a {
-            color: #ffdd57;
+            color: var(--neon-pink);
             text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: var(--neon-blue);
         }
         .footer {
             position: fixed;
-            bottom: 10px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.8em;
-            color: #ccc;
+            font-size: 0.95em;
+            color: var(--neon-blue);
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px var(--neon-pink);
+            z-index: 10;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.3em; }
+            .section { padding: 12px 6px; }
         }
     </style>
 </head>
 <body>
-    <h1>How to Use the Game Launcher</h1>
+    <h1>Shadow Slime Launcher Help</h1>
     
     <div class="section">
-        <h2>Installation Steps</h2>
-        <p>To install the game using the launcher, follow these steps:</p>
+        <h2>🟣 How to Actually Use It (Step by Step)</h2>
         <ol>
-            <li><strong>Download the Game Launcher:</strong> Visit the official website and click on the download link for the game launcher. Ensure you download the correct version for your operating system.</li>
-            <br>
-            <li><strong>Run the Launcher:</strong> Once the download is complete, locate the launcher executable file in your downloads folder and double-click it to run. Make sure to allow any necessary permissions that may pop up.</li>
-            <br>
-            <li><strong>Follow the Prompts:</strong> The launcher will guide you through the installation process. Since it's a console application, you will need to type whatever it tells you when prompted to proceed with the installation.</li>
-            <br>
-            <li><strong>Installation Complete:</strong> Once the installation is finished, you will receive a confirmation message indicating the successful setup. You can now launch the game from the launcher.</li>
+            <li>
+                <b>Download the Launcher:</b><br>
+                Go to the <a href="https://jogamerforgames2021.github.io/AmongUsShadowSlime/" target="_blank">official Shadow Slime website</a> and click <b>Download Launcher</b> to get the latest <code>AmongUsLauncher.exe</code>.
+            </li>
+            <li>
+                <b>Run as Administrator:</b><br>
+                <b>Right-click</b> the launcher and choose <b>Run as administrator</b>.<br>
+                This is required so the launcher can install/update the game and create shortcuts.<br>
+                If Windows asks for permission, click <b>Yeas</b>.
+            </li>
+            <li>
+                <b>Launcher Startup:</b><br>
+                When you start the launcher, it will:<br>
+                - Check for updates to itself and update if needed.<br>
+                - Show a message from Shadow (if available).<br>
+                - Start Discord Rich Presence.
+            </li>
+            <li>
+                <b>First-Time Setup / Installing the Game:</b><br>
+                If Among Us is <b>not installed</b>:<br>
+                - The launcher will say the game isn’t found and ask if you want to download it.<br>
+                - Type <b>yes</b> and press Enter.<br>
+                - It will ask where to install the game:<br>
+                  &nbsp;&nbsp;• Press Enter to use the default folder (recommended).<br>
+                  &nbsp;&nbsp;• Or type a custom folder path and press Enter.<br>
+                - The launcher will download and extract the latest version for you.<br>
+                - When done, you’ll see a success message.
+            </li>
+            <li>
+                <b>Main Menu Options:</b><br>
+                After setup, you’ll see a menu like this:<br>
+                <code>
+[1] Run Game   [2] Exit   [3] YouTube   [4] Discord<br>
+[5] Create a Shortcut   [6] Open Folder<br>
+[7] Reinstall Among Us  [8] Uninstall
+                </code>
+                <ul>
+                    <li><b>1. Run Game:</b> Launches Among Us.</li>
+                    <li><b>2. Exit:</b> Closes the launcher.</li>
+                    <li><b>3. YouTube:</b> Opens the Shadow Slime YouTube channel.</li>
+                    <li><b>4. Discord:</b> Opens the Discord server invite.</li>
+                    <li><b>5. Create a Shortcut:</b> Puts a shortcut to Among Us on your desktop.</li>
+                    <li><b>6. Open Folder:</b> Opens the folder where the game is installed.</li>
+                    <li><b>7. Reinstall Among Us:</b> Redownloads and reinstalls the game (use if you have problems).</li>
+                    <li><b>8. Uninstall:</b> Removes the game and all launcher data from your PC.</li>
+                </ul>
+            </li>
+            <li>
+                <b>Updating the Game:</b><br>
+                Every time you start the launcher, it checks for new versions.<br>
+                If an update is found, it will ask if you want to update.<br>
+                Type <b>yes</b> and press Enter to update.<br>
+                The launcher will download and install the update for you.
+            </li>
+            <li>
+                <b>Uninstalling:</b><br>
+                Choose option <b>8</b> from the menu.<br>
+                Type <b>yes</b> to confirm.<br>
+                The launcher will delete the game and its data.
+            </li>
+            <li>
+                <b>Discord Rich Presence:</b><br>
+                If you have Discord running, your status will show you’re using the launcher.<br>
+                If you see a warning about <code>pypresence</code>, you can install it with:<br>
+                <code>pip install pypresence</code> (optional, for advanced users).
+            </li>
+            <li>
+                <b>Troubleshooting:</b><br>
+                <ul>
+                    <li><b>No Internet?</b> The launcher needs internet to download and update the game.</li>
+                    <li><b>Permissions?</b> Always run as administrator.</li>
+                    <li><b>Game not launching?</b> Try reinstalling (option 7).</li>
+                    <li><b>Need help?</b> Join the <a href="https://discord.com/invite/7Vvj2vpT6S" target="_blank">Discord server</a>.</li>
+                </ul>
+            </li>
         </ol>
     </div>
 
     <div class="section">
-        <h2>Running the Game</h2>
-        <p>After installation, you can easily run the game by following these steps:</p>
-        <ol>
-            <li><strong>In the launcher... </strong> After a process is complete it will Give you choices, One of them is Launching the game.</li>
-        </ol>
-        <br>
-        <h2>Or...</h2>
-        <ol>
-            <li><strong>Open the Game executable:</strong> Same directory as the Launcher.</li>
-        </ol>
-    </div>
-
-    <div class="section">
-        <h2>Updating the Game</h2>
-        <p>The launcher is designed to automatically check for game updates. Here’s how it works:</p>
-        <ol>
-            <li><strong>Automatic Check:</strong> Each time you open the launcher, it will connect to the server and check if a new version of the game is available.</li>
-            <br>
-            <li><strong>Update Notification:</strong> If an update is found, the launcher will notify you with a prompt asking if you want to download the update. You need to type 'yes' to proceed with the update.</li>
-            <br>
-            <li><strong>Download and Install:</strong> If you choose to update, the launcher will download the latest version and install it automatically. You will see progress updates in the console until the installation is complete.</li>
-        </ol>
-    </div>
-
-    <div class="section">
-        <h2>Support and Community</h2>
-        <p>If you encounter any issues or have questions, please reach out for support:</p>
-        <ol>
-            <li><strong>Join Our Community:</strong> For more assistance, visit our <a href="https://discord.com/invite/7Vvj2vpT6S">Discord server</a> to connect with other players and developers. They can provide help and tips.</li>
-            <br>
-            <li><strong>Feedback:</strong> We value your feedback! Let us know your thoughts and suggestions for future updates by messaging us through Discord.</li>
-        </ol>
+        <h2>🌐 Community & Feedback</h2>
+        <ul>
+            <li>
+                <b>Discord:</b> <a href="https://discord.com/invite/7Vvj2vpT6S" target="_blank">Join here</a>
+            </li>
+            <li>
+                <b>Feedback:</b> Let us know your thoughts and suggestions on Discord!
+            </li>
+        </ul>
     </div>
 
     <div class="footer">Shadow Slime says hi chat.</div>
