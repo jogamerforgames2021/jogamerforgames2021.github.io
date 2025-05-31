@@ -403,7 +403,7 @@
             <img src="https://img.icons8.com/ios-filled/50/ffffff/feedback.png" alt="Help">
         </a>
 
-        <button class="button download-launcher" onclick="window.location.href='https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/Among.Us.ShadowSlime.zip'">
+        <button class="button download-launcher" onclick="window.location.href='https://raw.githubusercontent.com/jogamerforgames2021/AmongUsLauncherNew/refs/heads/main/AmongUsLauncher.exe'">
             Download Launcher
         </button>
         <button id="amongUsDownloadBtn" class="button download-amongus">
@@ -432,30 +432,30 @@
         fetch("https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/Version.txt")
             .then(response => response.text())
             .then(version => {
-                amongUsDownloadBtn.innerHTML = `<span class="small-text">Don't need launcher?</span><br>Download Among Us (${version.trim()}) Directly`;
-                
+                const trimmedVersion = version.trim();
+                const amongUsDirectUrl = `https://github.com/jogamerforgames2021/AmongUsLauncherNew/releases/download/${trimmedVersion}/app.zip`;
+                amongUsDownloadBtn.innerHTML = `<span class="small-text">Don't need launcher?</span><br>Download Among Us (${trimmedVersion}) Directly`;
+
                 amongUsDownloadBtn.onclick = () => {
-                if (isOutdated) {
-                    document.body.classList.add("blur");
-                    setTimeout(() => {
-                        document.body.classList.add("active");
-                    }, 50);
+                    if (isOutdated) {
+                        document.body.classList.add("blur");
+                        setTimeout(() => {
+                            document.body.classList.add("active");
+                        }, 50);
 
-                    setTimeout(() => {
-                        const userConfirmed = confirm("This version of Among Us is outdated. Would you still like to download it?");
-                        document.body.classList.remove("active");
-                        document.body.classList.remove("blur");
-                        if (!userConfirmed) {
-                            return;
-                        }
-                        window.location.href = "https://www.dropbox.com/scl/fo/exm6gldgju7ad2xvg5zma/AMbpjSFHEjdNW9i22HGksg0?rlkey=quybmdqt69klke2xcwhiba75u&st=jr8ahi3o&dl=1";
-                    }, 100);
-                } else {
-                    window.location.href = "https://www.dropbox.com/scl/fo/exm6gldgju7ad2xvg5zma/AMbpjSFHEjdNW9i22HGksg0?rlkey=quybmdqt69klke2xcwhiba75u&st=jr8ahi3o&dl=1";
-                }
-            };
-
-                
+                        setTimeout(() => {
+                            const userConfirmed = confirm("This version of Among Us is outdated. Would you still like to download it?");
+                            document.body.classList.remove("active");
+                            document.body.classList.remove("blur");
+                            if (!userConfirmed) {
+                                return;
+                            }
+                            window.location.href = amongUsDirectUrl;
+                        }, 100);
+                    } else {
+                        window.location.href = amongUsDirectUrl;
+                    }
+                };
             })
             .catch(error => {
                 console.error("Error fetching version information:", error);
