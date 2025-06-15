@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Among Us Download Redirect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Redirecting you to the latest Among Us download.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #a020f0 0%, #240027 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+        .glass {
+            background: rgba(30, 0, 60, 0.85);
+            border-radius: 24px;
+            box-shadow: 0 8px 48px 0 #a020f0cc, 0 1.5px 0 #fff2;
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            max-width: 420px;
+            width: 95vw;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .amongus-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 0 16px #fff8);
+            animation: float 2.5s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-16px);}
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 2px 16px #a020f0cc;
+        }
+        .status {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: #fff;
+            opacity: 0.92;
+        }
+        .spinner {
+            margin: 1.5rem auto 1rem auto;
+            width: 48px;
+            height: 48px;
+            border: 5px solid #fff3;
+            border-top: 5px solid #a020f0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg);}
+        }
+        .download-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.85rem 2.2rem;
+            background: linear-gradient(90deg, #ff4fa3 0%, #a020f0 100%);
+            color: #fff;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 16px #a020f0cc;
+            transition: background 0.2s, transform 0.15s;
+            letter-spacing: 0.5px;
+        }
+        .download-link:hover, .download-link:focus {
+            background: linear-gradient(90deg, #ff7fd5 0%, #d580ff 100%);
+            transform: scale(1.05);
+        }
+        .version {
+            margin-top: 0.7rem;
+            font-size: 0.98rem;
+            color: #ffb3f7;
+            letter-spacing: 0.2px;
+        }
+        .footer {
+            margin-top: 2.2rem;
+            font-size: 0.93rem;
+            color: #fff8;
+            opacity: 0.7;
+        }
+        /* Decorative background blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .blob1 {
+            width: 340px; height: 340px;
+            background: #ff4fa3;
+            top: -120px; left: -120px;
+        }
+        .blob2 {
+            width: 260px; height: 260px;
+            background: #a020f0;
+            bottom: -80px; right: -80px;
+        }
+        .blob3 {
+            width: 180px; height: 180px;
+            background: #ffb3f7;
+            top: 60px; right: -60px;
+        }
+        @media (max-width: 600px) {
+            .glass { padding: 1.2rem 0.5rem 1.5rem 0.5rem; }
+            h1 { font-size: 1.3rem; }
+            .amongus-icon { width: 54px; height: 54px; }
+        }
+    </style>
+    <script>
+        let downloadUrl = "#";
+        fetch("https://raw.githubusercontent.com/jogamerforgames2021/BootstrapperTEST/refs/heads/main/Version.txt")
+            .then(r => r.text())
+            .then(v => {
+                const version = v.trim();
+                downloadUrl = `https://github.com/jogamerforgames2021/AmongUsLauncherNew/releases/download/${version}/app.zip`;
+                document.getElementById('download-link').href = downloadUrl;
+                document.getElementById('download-link').textContent = "If you are not redirected, click here to download Among Us";
+                document.getElementById('version').textContent = "Latest version: v" + version;
+                setTimeout(() => {
+                    window.location.replace(downloadUrl);
+                }, 1400);
+                document.getElementById('spinner').style.display = "none";
+                document.getElementById('status').textContent = "Preparing your download...";
+            })
+            .catch(() => {
+                document.getElementById('status').textContent = "Failed to fetch download link. Please try again later.";
+                document.getElementById('spinner').style.display = "none";
+                document.getElementById('download-link').style.display = "none";
+            });
+    </script>
+</head>
+<body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="glass">
+        <img class="amongus-icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6O_PorvZhyV-fuDkF3K7hTR4miobjqCyvWw&s" alt="Among Us Icon" />
+        <h1>Among Us Download</h1>
+        <div id="status" class="status">Redirecting you to the latest Among Us download...</div>
+        <div id="spinner" class="spinner"></div>
+        <a id="download-link" class="download-link" href="#" style="display:block;">If you are not redirected automatically, click here.</a>
+        <div id="version" class="version"></div>
+        <div class="footer">
+            &copy; 2025 ShadowSlimeDEV &mdash; Safe direct download powered by GitHub Releases.
+        </div>
+         </div>
+</body>
+</html>
