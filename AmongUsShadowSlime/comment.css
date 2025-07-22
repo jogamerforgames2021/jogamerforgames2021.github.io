@@ -1,163 +1,78 @@
-/*!
- * Modified from GitHub's Dark Dimmed theme, licensed under the MIT License
- * Copyright (c) 2018 GitHub Inc.
- * https://github.com/primer/primitives/blob/main/LICENSE
+/*
+ * Custom Giscus Theme to Match Tutorials Hub Style
+ * Based on GitHub Dark Dimmed Theme
  */
 
-/* Your existing root variables (keep these as they define your site's theme) */
-:root {
-  --bg: #121212;
-  --accent: #6c3ebd;
-  --text: #e0d1f7;
-  --card: #1e1b2e;
-  --hover: #34214d;
-  --plyr-color-main: #6c3ebd;
-  --plyr-menu-background: #2c2c2c;
-  --plyr-menu-color: #e0d1f7;
-  --plyr-menu-border-color: #6c3ebd;
-  --plyr-menu-item-arrow-color:var(--accent);
-  --plyr-tooltip-color:var(--plyr-menu-color);
-}
-
-/* GISCUS THEME OVERRIDES */
-/* These variables control the Giscus theme. We are mapping them to your site's custom variables. */
 main {
-  /* Foreground Colors */
-  --color-fg-default: var(--text); /* Main text color */
-  --color-fg-muted: #a097bb; /* Muted text (e.g., secondary info). Slightly adjusted from var(--text) for contrast if needed */
-  --color-fg-subtle: #837a9f; /* Even more subtle text */
+  --color-prettylights-syntax-comment: #a190c7;
+  --color-prettylights-syntax-constant: #c487ff;
+  --color-prettylights-syntax-entity: #dab9ff;
+  --color-prettylights-syntax-keyword: #f77fb0;
+  --color-prettylights-syntax-string: #a0d2ff;
+  --color-prettylights-syntax-variable: #ffb76b;
 
-  /* Canvas/Background Colors */
-  --color-canvas-default: var(--bg); /* Main background of the comment section */
-  --color-canvas-overlay: var(--card); /* Background for pop-ups, menus (like emoji picker) */
-  --color-canvas-inset: #1e1e1e; /* Background for text input fields, subtle variations */
-  --color-canvas-subtle: var(--card); /* Background for comment cards, selected states */
+  --color-btn-text: #e0d1f7;
+  --color-btn-bg: #34214d;
+  --color-btn-border: #6c3ebd;
+  --color-btn-hover-bg: #6c3ebd;
+  --color-btn-hover-border: #8f5efc;
+  --color-btn-selected-bg: #1e1b2e;
 
-  /* Border Colors */
-  --color-border-default: var(--accent); /* Default borders, separators */
-  --color-border-muted: #4e366d; /* Muted borders, less prominent */
+  --color-btn-primary-text: #fff;
+  --color-btn-primary-bg: #6c3ebd;
+  --color-btn-primary-border: #8f5efc;
+  --color-btn-primary-hover-bg: #8f5efc;
+  --color-btn-primary-hover-border: #a181ff;
 
-  /* Accent Colors */
-  --color-accent-fg: var(--accent); /* Accent color for links, primary buttons */
-  --color-accent-emphasis: var(--accent); /* Stronger accent (e.g., active states) */
-  --color-accent-muted: #8c5ee066; /* Muted accent for backgrounds */
-  --color-accent-subtle: #6c3ebd1a; /* Very subtle accent for very light backgrounds */
+  --color-fg-default: #e0d1f7;
+  --color-fg-muted: #b6a3df;
+  --color-fg-subtle: #8b74c0;
 
-  /* Button Colors (General) */
-  --color-btn-text: var(--text);
-  --color-btn-bg: var(--card);
-  --color-btn-border: var(--accent);
-  --color-btn-hover-bg: var(--hover);
-  --color-btn-hover-border: var(--accent);
-  --color-btn-active-bg: var(--card); /* Adjusted to keep consistent with card on active */
-  --color-btn-active-border: var(--accent);
-  --color-btn-selected-bg: var(--hover);
+  --color-canvas-default: #121212;
+  --color-canvas-overlay: #1e1b2e;
+  --color-canvas-inset: #181320;
+  --color-canvas-subtle: #34214d;
 
-  /* Primary Button Colors (Submit button) */
-  --color-btn-primary-text: #fff; /* White text for primary button */
-  --color-btn-primary-bg: var(--accent); /* Primary button background */
-  --color-btn-primary-border: var(--accent);
-  --color-btn-primary-hover-bg: var(--hover);
-  --color-btn-primary-hover-border: var(--accent);
-  --color-btn-primary-selected-bg: var(--hover);
-  --color-btn-primary-disabled-text: #fff8; /* Disabled text (slightly transparent white) */
-  --color-btn-primary-disabled-bg: var(--accent); /* Disabled background (match accent but less opaque) */
-  --color-btn-primary-disabled-border: var(--accent);
+  --color-border-default: #6c3ebd;
+  --color-border-muted: #4e2e80;
 
-  /* Other specific elements that might use these */
-  --color-social-reaction-bg-hover: var(--hover);
-  --color-social-reaction-bg-reacted-hover: var(--accent); /* Keep accent for reacted state */
+  --color-accent-fg: #a181ff;
+  --color-accent-emphasis: #c49bff;
+  --color-accent-muted: #d2baff;
+  --color-accent-subtle: #2e1e4d;
 
-  /* Prettylights (code syntax highlighting, might not be used much in comments but good to have) */
-  --color-prettylights-syntax-comment: #968fa3; /* Adjusted for better visibility */
-  --color-prettylights-syntax-constant: var(--accent);
-  --color-prettylights-syntax-entity: #dcbdfb;
-  --color-prettylights-syntax-storage-modifier-import: var(--text);
-  --color-prettylights-syntax-entity-tag: #8ddb8c; /* Greenish, might adjust if it clashes too much */
-  --color-prettylights-syntax-keyword: #f47067; /* Reddish */
-  --color-prettylights-syntax-string: #96d0ff; /* Light blue */
-  --color-prettylights-syntax-variable: #f69d50; /* Orange */
-  --color-prettylights-syntax-invalid-illegal-text: var(--text);
-  --color-prettylights-syntax-invalid-illegal-bg: #922323;
-  --color-prettylights-syntax-carriage-return-text: var(--text);
-  --color-prettylights-syntax-carriage-return-bg: #ad2e2c;
-  --color-prettylights-syntax-string-regexp: #8ddb8c;
-  --color-prettylights-syntax-markup-list: #eac55f;
-  --color-prettylights-syntax-markup-heading: var(--accent);
-  --color-prettylights-syntax-markup-italic: var(--text);
-  --color-prettylights-syntax-markup-bold: var(--text);
-  --color-prettylights-syntax-markup-deleted-text: #ffd8d3;
-  --color-prettylights-syntax-markup-deleted-bg: #78191b;
-  --color-prettylights-syntax-markup-inserted-text: #b4f1b4;
-  --color-prettylights-syntax-markup-inserted-bg: #1b4721;
-  --color-prettylights-syntax-markup-changed-text: #ffddb0;
-  --color-prettylights-syntax-markup-changed-bg: #682d0f;
-  --color-prettylights-syntax-markup-ignored-text: var(--text);
-  --color-prettylights-syntax-markup-ignored-bg: #255ab2;
-  --color-prettylights-syntax-meta-diff-range: #dcbdfb;
-  --color-prettylights-syntax-brackethighlighter-angle: var(--fg-muted);
-  --color-prettylights-syntax-sublimelinter-gutter-mark: var(--fg-subtle);
-  --color-prettylights-syntax-constant-other-reference-link: #96d0ff;
+  --color-success-fg: #8ddb8c;
+  --color-attention-fg: #ffdd7a;
+  --color-danger-fg: #ff6b81;
 
-  /* Other */
-  --color-attention-fg: #c69026; /* Warning/attention color (yellowish) */
-  --color-attention-muted: #ae7c1466;
-  --color-attention-subtle: #ae7c1426;
-  --color-danger-fg: #e5534b; /* Error/danger color (red) */
-  --color-danger-muted: #e5534b66;
-  --color-danger-subtle: #e5534b1a;
-  --color-success-fg: #57ab5a; /* Success color (green) */
-
-  /* Shadow & Misc */
-  --color-btn-shadow: 0 0 #0000;
-  --color-btn-inset-shadow: 0 0 #0000;
-  --color-btn-primary-shadow: 0 0 #0000;
-  --color-btn-primary-inset-shadow: 0 0 #0000;
-  --color-action-list-item-default-hover-bg: var(--hover); /* Adjusted for menu item hover */
-  --color-segmented-control-bg: var(--card); /* Adjusted */
-  --color-segmented-control-button-bg: var(--bg); /* Adjusted */
-  --color-segmented-control-button-selected-border: var(--accent); /* Adjusted */
-  --color-neutral-muted: var(--accent); /* Used for things like reaction counts, muted details */
   --color-primer-shadow-inset: 0 0 #0000;
-  --color-scale-gray-7: var(--card); /* Adjusted for potential background uses */
-  --color-scale-blue-8: var(--accent); /* Adjusted for potential background uses */
 }
 
-/* Base Giscus CSS (keep as is) */
-main .pagination-loader-container {
-  background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg);
-}
-
-/*! Custom CSS */
+/* Reorder and spacing tweaks */
 .gsc-reactions-count {
-  display: none
+  display: none;
 }
-
 .gsc-timeline {
-  flex-direction: column-reverse
+  flex-direction: column-reverse;
 }
-
 .gsc-header {
-  padding-bottom: 1rem
+  padding-bottom: 1rem;
 }
-
-.gsc-comments>.gsc-header {
-  order: 1
+.gsc-comments > .gsc-header {
+  order: 1;
 }
-
-.gsc-comments>.gsc-comment-box {
+.gsc-comments > .gsc-comment-box {
   margin-bottom: 1rem;
-  order: 2
+  order: 2;
 }
-
-.gsc-comments>.gsc-timeline {
-  order: 3
+.gsc-comments > .gsc-timeline {
+  order: 3;
 }
 
 .gsc-homepage-bg {
-  background-color: var(--canvas-inset); /* Use a Giscus variable for consistency */
+  background-color: #121212;
 }
 
 main .gsc-loading-image {
-  background-image: url(https://github.githubassets.com/images/mona-loading-dimmed.gif);
+  background-image: url("https://github.githubassets.com/images/mona-loading-dimmed.gif");
 }
