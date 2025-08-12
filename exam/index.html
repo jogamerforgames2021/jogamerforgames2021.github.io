@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Roblox Homework — Submit to Discord</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --accent:#00b0ff;
+    --muted:#98a0b3;
+    --surface:#09121a;
+    --green:#2ecc71;
+    --danger:#ff6b6b;
+    --glass: rgba(255,255,255,0.03);
+  }
+  *{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial}
+  body{margin:0;min-height:100vh;background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(0,176,255,0.06), transparent 10%),
+    linear-gradient(180deg,#071021 0%, #04111b 100%);
+    color:#e6eef8;padding:28px;display:flex;align-items:flex-start;justify-content:center}
+  .container{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:14px;padding:20px;box-shadow:0 10px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+  header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+  .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7a4dff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#021328;font-size:20px}
+  h1{margin:0;font-size:20px}
+  p.lead{margin:0;color:var(--muted);font-size:13px}
+  .top-row{display:flex;gap:12px;align-items:center;margin:14px 0 20px}
+  .input, .btn, .select {background:var(--surface);border:1px solid rgba(255,255,255,0.03);padding:10px 12px;border-radius:8px;color:inherit}
+  input.input{min-width:220px}
+  .questions{display:flex;flex-direction:column;gap:14px}
+  .qcard{background:var(--card);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+  .qid{font-size:12px;color:var(--muted);margin-bottom:6px}
+  .qtext{font-weight:600;margin-bottom:10px}
+  .options{display:flex;flex-direction:column;gap:8px}
+  label.option{display:flex;align-items:center;gap:10px;background:var(--glass);padding:8px;border-radius:8px;cursor:pointer;border:1px dashed rgba(255,255,255,0.02)}
+  .small{font-size:13px;color:var(--muted)}
+  .actions{display:flex;gap:8px;align-items:center;margin-top:18px}
+  .btn{cursor:pointer;border:none;padding:10px 14px;border-radius:10px;font-weight:600}
+  .btn.primary{background:linear-gradient(90deg,var(--accent),#7a4dff);color:#021328}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+  .footer-note{margin-top:12px;color:var(--muted);font-size:13px}
+  .status{margin-left:auto;font-size:13px;color:var(--muted)}
+  .editor-container{height:220px;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,0.3)}
+  @media (max-width:600px){
+    .top-row{flex-direction:column;align-items:stretch}
+  }
+  /* small helper */
+  .hint{font-size:12px;color:var(--muted);margin-top:6px}
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="logo">S</div>
+      <div>
+        <h1>Roblox Studio Exam 1</h1>
+        <p class="lead">Enter your name, solve, then submit. Answers are marked by shadow.</p>
+      </div>
+    </header>
+
+    <div class="top-row">
+      <input id="nameInput" class="input input" placeholder="Your name (required)"/>
+      <input id="webhookInput" class="input" placeholder="Hi"/>
+      <select id="exampleSelect" class="select">
+        <option value="builtin">El Zengaan</option>
+        <option value="external">This is gay doesnt work</option>
+      </select>
+      <div class="status" id="status">Ready</div>
+    </div>
+
+    <div id="questionsRoot" class="questions" aria-live="polite"></div>
+
+    <div class="actions">
+      <button id="submitBtn" class="btn primary">Submit your answers.</button>
+      <button id="previewBtn" class="btn ghost">Preview message</button>
+      <div class="hint">Tip: Preview message is just to check your message, and how it looks like!</div>
+    </div>
+
+    <div class="footer-note">Monaco Editor is used for code answers. Large pages may load a few seconds while Monaco initializes, dont cry about it.. zengann.</div>
+  </div>
+
+  <!-- Monaco loader -->
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script>
+
+  <script>
+/* =======================
+   CONFIG: edit here
+   ======================= */
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1404839339887693975/zQ9WqSpxF_9hznhVMnEmznJlga6lTLWPur_y3qcQn8n_C-lHEKC21vB0MljrKSe3Tmg1"; // <-- replace with your webhook or paste it in the top input
+// Embedded questions data. Edit / add entries here.
+const questionsData = {
+  "questions": [
+    {
+      "id": 1,
+      "type": "truefalse",
+      "text": "In Roblox Studio, you can turn multiple selected parts into a single model."
+    },
+    {
+      "id": 2,
+      "type": "truefalse",
+      "text": "Using 'Union' on two parts will permanently combine them without any way to separate them."
+    },
+    {
+      "id": 3,
+      "type": "truefalse",
+      "text": "Changing a part's BrickColor will also automatically change its Material."
+    },
+    {
+      "id": 4,
+      "type": "truefalse",
+      "text": "You can add decals to parts by dragging them from the Toolbox."
+    },
+    {
+      "id": 5,
+      "type": "truefalse",
+      "text": "Holding Shift while moving an object in Roblox Studio disables snapping for smooth movement."
+    },
+
+    // --- Multiple Choice (8) ---
+    {
+      "id": 6,
+      "type": "mcq",
+      "text": "Which tool would you use to change a part’s size?",
+      "options": ["Select Tool", "Move Tool", "Resize Tool", "Rotate Tool"]
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "text": "Which union operation removes the overlapping area of two parts?",
+      "options": ["Union", "Separate", "Negate", "Intersect"]
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "text": "What property would you adjust to make a part more see-through?",
+      "options": ["Reflectance", "Transparency", "Material", "BrickColor"]
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "text": "Which of these is NOT a light type in Roblox Studio?",
+      "options": ["SpotLight", "SurfaceLight", "PointLight", "AreaLight"]
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "text": "Where can you drag a decal from to apply it to a part?",
+      "options": ["Properties Panel", "Lighting Service", "Toolbox", "Terrain Editor"]
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "text": "What property would you change to make a part cast no shadow?",
+      "options": ["Anchored", "CastShadow", "CanCollide", "Material"]
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "text": "Which tool allows you to precisely line up multiple objects?",
+      "options": ["Rotate Tool", "Object Aligner", "Union Tool", "Material Tool"]
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "text": "What effect would you add to make a campfire look realistic?",
+      "options": ["Smoke", "Fire", "Sparkles", "Beam"]
+    },
+
+    // --- Complete (2) ---
+    {
+      "id": 14,
+      "type": "code",
+      "text": "Complete: To create a smooth movement without snapping, hold ______ while moving an object."
+    },
+    {
+      "id": 15,
+      "type": "code",
+      "text": "Complete: The three main tools for adjusting a part’s position, size, and angle are Move, Resize, and ______."
+    }
+  ]
+};
+/* =======================
+   END CONFIG
+   ======================= */
+
+/* State */
+let editors = {}; // hold monaco editors by question id
+let monacoLoaded = false;
+let useExternal = false;
+
+/* Utilities */
+const $ = id => document.getElementById(id);
+const qsRoot = $('questionsRoot');
+const statusEl = $('status');
+const nameInput = $('nameInput');
+const webhookInput = $('webhookInput');
+const exampleSelect = $('exampleSelect');
+
+function setStatus(s, color) {
+  statusEl.textContent = s;
+  if(color) statusEl.style.color=color; else statusEl.style.color='';
+}
+
+/* Load questions: either from embedded or try fetching /questions.json */
+async function loadQuestions() {
+  qsRoot.innerHTML = '';
+  setStatus('Loading questions...');
+  let data = questionsData;
+  if(exampleSelect.value === 'external') {
+    try {
+      const resp = await fetch('/questions.json', {cache: "no-store"});
+      if(!resp.ok) throw new Error('not found');
+      data = await resp.json();
+      setStatus('Loaded /questions.json');
+    } catch (err) {
+      setStatus('Could not load /questions.json — using embedded data', '#ffb86b');
+    }
+  } else {
+    setStatus('Using embedded questions');
+  }
+
+  renderQuestions(data.questions || []);
+}
+
+/* Render functions */
+function renderQuestions(list) {
+  qsRoot.innerHTML = '';
+  editors = {};
+  list.forEach(q => {
+    const card = document.createElement('div');
+    card.className = 'qcard';
+    const qid = document.createElement('div');
+    qid.className = 'qid';
+    qid.textContent = `question id {${q.id}} — ${q.type}`;
+    const qtext = document.createElement('div');
+    qtext.className = 'qtext';
+    qtext.textContent = q.text;
+
+    card.appendChild(qid);
+    card.appendChild(qtext);
+
+    if(q.type === 'mcq') {
+      const opts = document.createElement('div');
+      opts.className = 'options';
+      q.options.forEach((opt, idx) => {
+        const id = `q${q.id}_opt_${idx}`;
+        const label = document.createElement('label');
+        label.className = 'option';
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = `q_${q.id}`;
+        input.value = opt;
+        input.id = id;
+        const span = document.createElement('span');
+        span.textContent = opt;
+        label.appendChild(input);
+        label.appendChild(span);
+        opts.appendChild(label);
+      });
+      card.appendChild(opts);
+    } else if(q.type === 'truefalse') {
+      const opts = document.createElement('div');
+      opts.className = 'options';
+      ['True','False'].forEach(val => {
+        const id = `q${q.id}_tf_${val}`;
+        const label = document.createElement('label');
+        label.className = 'option';
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = `q_${q.id}`;
+        input.value = val.toLowerCase();
+        input.id = id;
+        const span = document.createElement('span');
+        span.textContent = val;
+        label.appendChild(input);
+        label.appendChild(span);
+        opts.appendChild(label);
+      });
+      card.appendChild(opts);
+    } else if(q.type === 'code') {
+      // create a container for monaco
+      const meta = document.createElement('div');
+      meta.className = 'small';
+      meta.textContent = 'This is a code question. Use the editor below to write your code.. ya zengy.';
+      card.appendChild(meta);
+      const editorWrap = document.createElement('div');
+      editorWrap.className = 'editor-container';
+      editorWrap.id = `editor_${q.id}`;
+      card.appendChild(editorWrap);
+      // store initial code if any
+      q.initial = q.initial || `-- ${q.text}\n`;
+    } else {
+      const unknown = document.createElement('div');
+      unknown.textContent = `unsupported type: ${q.type}`;
+      card.appendChild(unknown);
+    }
+
+    qsRoot.appendChild(card);
+  });
+
+  // lazy init monaco for code questions
+  initMonacoForQuestions(list.filter(q => q.type === 'code'));
+}
+
+/* Monaco initialization for code questions */
+function initMonacoForQuestions(codeQuestions) {
+  if(codeQuestions.length === 0) return;
+  setStatus('Loading Monaco editor (may take a moment)...');
+
+  // configure loader base
+  require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs' }});
+  // disable worker cross-origin issues
+  self.MonacoEnvironment = { getWorkerUrl: function() { return URL.createObjectURL(new Blob(['self.MonacoEnvironment = { baseUrl: "https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/" };importScripts("https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/base/worker/workerMain.js");'], { type: 'text/javascript' })); } };
+
+  require(['vs/editor/editor.main'], function() {
+    monacoLoaded = true;
+    setStatus('Monaco ready');
+    codeQuestions.forEach(q => {
+      const elId = `editor_${q.id}`;
+      const el = document.getElementById(elId);
+      if(!el) return;
+      const editor = monaco.editor.create(el, {
+        value: q.initial || '',
+        language: 'lua', // use lua (monaco supports lua syntax)
+        theme: 'vs-dark',
+        automaticLayout: true,
+        minimap: { enabled: false },
+        fontSize: 13,
+      });
+      editors[q.id] = editor;
+    });
+  }, function(err){
+    console.error('monaco load error', err);
+    setStatus('Failed to load editor', '#ff6b6b');
+  });
+}
+
+/* Build discord message payload string based on answers */
+function buildDiscordMessage(answers, questions) {
+  // answers: { qid: {type, value, rawSelectedIndex?} ... }
+  const lines = [];
+  lines.push('📚 **Exam Submission**');
+  lines.push(`**Name:** ${answers.__name || 'Unknown'}`);
+  lines.push(`**Time (UTC):** ${new Date().toISOString()}`);
+  lines.push(''); // blank
+  questions.forEach(q => {
+    const qans = answers[q.id];
+    if(!qans) {
+      lines.push(`---\nquestion id {${q.id}} -- ${q.type}`);
+      lines.push(q.text);
+      lines.push('_No answer provided_');
+      lines.push('');
+      return;
+    }
+    if(q.type === 'mcq') {
+      lines.push(`---\nquestion id {${q.id}} -- mcq`);
+      lines.push(q.text);
+      q.options.forEach(opt => {
+        if(opt === qans.value) {
+          lines.push(` - ${opt} ✅`);
+        } else {
+          lines.push(` - ${opt}`);
+        }
+      });
+      lines.push(''); // space
+    } else if(q.type === 'truefalse') {
+      lines.push(`---\nquestion id {${q.id}} -- true or false`);
+      lines.push(q.text);
+      if (qans.value === null || qans.value === undefined || qans.value === '') {
+        lines.push('_No answer provided_');
+      } else {
+        const val = (qans.value === 'true' || qans.value === 'True' || qans.value === true);
+        lines.push(`answer: ${val ? '✅' : '❌'}`);
+      }
+      lines.push('');
+    } else if(q.type === 'code') {
+      lines.push(`---\nquestion id {${q.id}} -- code`);
+      lines.push(q.text);
+      lines.push('```lua');
+      lines.push(qans.value || '');
+      lines.push('```');
+      lines.push('');
+    } else {
+      lines.push(`---\nquestion id {${q.id}} -- ${q.type}`);
+      lines.push(q.text);
+      lines.push(`answer: ${qans.value || ''}`);
+      lines.push('');
+    }
+  });
+
+  // return as a single string content (Discord webhook content supports markdown)
+  return lines.join('\n');
+}
+
+/* Collect answers from DOM and editors */
+function collectAnswers(questions) {
+  const out = {};
+  out.__name = (nameInput.value || '').trim();
+  questions.forEach(q => {
+    if(q.type === 'mcq' || q.type === 'truefalse') {
+      const radios = document.getElementsByName(`q_${q.id}`);
+      let val = null;
+      radios.forEach && radios.forEach(r => { if(r.checked) val = r.value; });
+      // NodeList fallback
+      if(!val) {
+        for(let i=0;i<radios.length;i++){ if(radios[i].checked){ val = radios[i].value; break; } }
+      }
+      out[q.id] = { type: q.type, value: val };
+    } else if(q.type === 'code') {
+      const editor = editors[q.id];
+      const code = editor ? editor.getValue() : '';
+      out[q.id] = { type: q.type, value: code };
+    } else {
+      out[q.id] = { type: q.type, value: null };
+    }
+  });
+  return out;
+}
+
+/* Helper: Split a long string into chunks <=2000 chars, keeping code blocks (triple backticks) together */
+function splitMessage(str, maxLen = 2000) {
+  const lines = str.split('\n');
+  const chunks = [];
+  let current = '';
+  let inCodeBlock = false;
+  let codeBlockBuffer = '';
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const isCodeFence = line.trim().startsWith('```');
+    if (isCodeFence) {
+      inCodeBlock = !inCodeBlock;
+      // If ending a code block, flush buffer
+      if (!inCodeBlock) {
+        codeBlockBuffer += line + '\n';
+        // If code block is too big, still send as one chunk (Discord will truncate, but formatting is preserved)
+        if (codeBlockBuffer.length > maxLen) {
+          chunks.push(codeBlockBuffer);
+        } else {
+          // Try to append to current chunk if it fits
+          if ((current.length + codeBlockBuffer.length) > maxLen) {
+            if (current.length > 0) chunks.push(current);
+            current = codeBlockBuffer;
+          } else {
+            current += codeBlockBuffer;
+          }
+        }
+        codeBlockBuffer = '';
+      } else {
+        // Starting a code block, flush current chunk if needed
+        if (current.length > 0) {
+          chunks.push(current);
+          current = '';
+        }
+        codeBlockBuffer = line + '\n';
+      }
+    } else if (inCodeBlock) {
+      codeBlockBuffer += line + '\n';
+    } else {
+      // Not in code block
+      if ((current + line + '\n').length > maxLen) {
+        if (current.length > 0) chunks.push(current);
+        current = line + '\n';
+      } else {
+        current += line + '\n';
+      }
+    }
+  }
+  // Flush any remaining code block buffer (if unclosed)
+  if (codeBlockBuffer.length > 0) {
+    chunks.push(codeBlockBuffer);
+  }
+  if (current.length > 0) chunks.push(current);
+  return chunks;
+}
+
+/* Send to discord webhook, splitting if needed */
+async function sendToDiscord(webhookURL, messageContent) {
+  if(!webhookURL) throw new Error('Missing webhook URL');
+  const parts = splitMessage(messageContent, 2000);
+  let lastRes = null;
+  for (let i = 0; i < parts.length; i++) {
+    const payload = { content: parts[i] };
+    const res = await fetch(webhookURL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if(!res.ok) {
+      const text = await res.text().catch(()=>'<no body>');
+      throw new Error(`Discord responded ${res.status}: ${text}`);
+    }
+    lastRes = res;
+    // Optionally, add a small delay between messages to avoid rate limits
+    if (i < parts.length - 1) await new Promise(r => setTimeout(r, 500));
+  }
+  return lastRes;
+}
+
+/* UI actions */
+$('submitBtn').addEventListener('click', async () => {
+  const webhook = WEBHOOK_URL.trim();
+  if(!webhook) {
+    alert('Gay');
+    return;
+  }
+  const name = (nameInput.value || '').trim();
+  if(!name) { alert('Imagine submitting your Exam without Putting your name idiot.'); nameInput.focus(); return; }
+
+  const qList = (exampleSelect.value === 'external' ? (window.externalQuestions || questionsData.questions) : questionsData.questions);
+  setStatus('Collecting answers...');
+  const answers = collectAnswers(qList);
+  answers.__name = name;
+
+  const msg = buildDiscordMessage(answers, qList);
+  // show preview then send
+  try {
+    setStatus('Sending to Discord...');
+    await sendToDiscord(webhook, msg);
+    setStatus('Sent ✅', '#2ecc71');
+    alert('Submitted! Your answers were sent to that one mf called shadow!!!!.');
+  } catch (err) {
+    console.error(err);
+    setStatus('Failed to send', '#ff6b6b');
+    alert('Failed to send to shadow. See console for details. Error: ' + err.message);
+  }
+});
+
+$('previewBtn').addEventListener('click', () => {
+  const qList = (exampleSelect.value === 'external' ? (window.externalQuestions || questionsData.questions) : questionsData.questions);
+  const answers = collectAnswers(qList);
+  answers.__name = nameInput.value || 'Unknown';
+  const msg = buildDiscordMessage(answers, qList);
+  // show in modal-like window (browser prompt)
+  const w = window.open("", "preview", "width=700,height=600,scrollbars=yes");
+  w.document.body.style.background = '#0b1220';
+  w.document.body.style.color = '#e6eef8';
+  w.document.body.style.fontFamily = 'Inter, sans-serif';
+  w.document.body.innerHTML = '<pre style="white-space:pre-wrap; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; padding:14px;">' + escapeHtml(msg) + '</pre>';
+});
+
+/* small escaper for HTML */
+function escapeHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* load flow */
+exampleSelect.addEventListener('change', () => {
+  loadQuestions();
+});
+
+/* On first load, try to fetch external to allow repo option; but default embedded */
+window.addEventListener('load', async () => {
+  loadQuestions();
+});
+  </script>
+</body>
+</html>
