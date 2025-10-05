@@ -12,5 +12,68 @@
     "questionType": "textbox",
     "answers": [],
     "correctAnswer": "7722_Youssef1Win"
+  },
+  {
+    "id": 3,
+    "question": "ما هو لقبي على الإنترنت؟",
+    "questionType": "textbox",
+    "answers": [],
+    "correctAnswer": "SHADOWSLIME"
+  },
+  {
+    "id": 4,
+    "question": "ما اسم قطتي؟",
+    "questionType": "textbox",
+    "answers": [],
+    "correctAnswer": "NEMO"
+  },
+  {
+    "id": 5,
+    "question": "متى حصلت على قطتي؟",
+    "questionType": "datepicker",
+    "answers": [],
+    "correctAnswer": "2025-10-01"
+  },
+  {
+    "id": 6,
+    "question": "ما هي الشركة المصنعة لجهازي المحمول؟",
+    "questionType": "textbox",
+    "answers": [],
+    "correctAnswer": "ASUS"
+  },
+  {
+    "id": 7,
+    "question": "كم عدد الرام في جهازي؟",
+    "questionType": "textbox",
+    "answers": [],
+    "correctAnswer": "8"
+  },
+  {
+    "id": 8,
+    "question": "ما هو نوع اللابتوب الخاص بي؟",
+    "questionType": "textbox",
+    "answers": [],
+    "correctAnswer": "ASUS TUF GAMING A15"
+  },
+  {
+    "id": 9,
+    "question": "ما هي بطاقة الرسوميات (GPU) الخاصة بي؟",
+    "questionType": "textbox",
+    "answers": [],
+    "correctAnswer": "RTX 3050"
+  },
+  {
+    "id": 10,
+    "question": "ما هو اسم المستخدم الخاص بي في روبلوكس؟",
+    "questionType": "textbox",
+    "answers": [],
+    "correctAnswer": "jogamerforgames2019"
+  },
+  {
+    "id": 11,
+    "question": "ما هو طعامي المفضل؟",
+    "questionType": "textbox",
+    "answers": [],
+    "correctAnswer": "بشاميل"
   }
 ]
