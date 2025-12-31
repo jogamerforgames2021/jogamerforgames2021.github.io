@@ -3,206 +3,1135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadow Slime Launcher Help</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <meta name="description" content="Help and documentation for Among Us Launcher - Learn how to download, install, and use all features">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Help Center - Among Us Launcher</title>
+    
     <style>
-        :root {
-            --shadow-bg: #12001a;
-            --shadow-card: rgba(34, 0, 51, 0.92);
-            --shadow-border: #2e0047;
-            --neon-pink: #ff4ecd;
-            --neon-blue: #6c5ce7;
-            --deep-purple: #2e0047;
-            --white: #f8f8fa;
-            --glass: rgba(34, 0, 51, 0.85);
-        }
-        html, body {
-            height: 100%;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
         body {
-            min-height: 100vh;
-            background: linear-gradient(120deg, #1a0033 0%, #2e0047 40%, #0a0a23 100%);
-            background-size: 200% 200%;
-            animation: gradientMove 16s ease-in-out infinite;
-            color: var(--white);
-            font-family: 'Inter', 'Poppins', Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-bottom: 60px;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #fff;
+            overflow-x: hidden;
         }
-        @keyframes gradientMove {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-        }
-        h1 {
-            margin: 40px 0 10px 0;
-            font-size: 2.4em;
-            font-family: 'Poppins', Arial, sans-serif;
-            color: var(--neon-blue);
-            text-shadow: 0 0 24px var(--neon-pink), 0 0 48px var(--deep-purple);
-            letter-spacing: 2px;
-            font-weight: 900;
-            text-align: center;
-        }
-        h2 {
-            color: var(--neon-pink);
-            margin: 18px 0 10px 0;
-            font-family: 'Poppins', Arial, sans-serif;
-            font-size: 1.3em;
-            text-shadow: 0 0 10px var(--neon-pink);
-        }
-        p, li {
-            color: var(--white);
-            font-size: 1.08em;
-            line-height: 1.7;
-            font-family: 'Inter', Arial, sans-serif;
-        }
-        .section {
-            background: var(--shadow-card);
-            border: 2px solid var(--neon-blue);
-            border-radius: 18px;
-            box-shadow: 0 0 24px var(--deep-purple), 0 0 32px var(--neon-pink);
-            padding: 24px 18px;
-            margin: 22px 0;
-            max-width: 540px;
-            width: 95vw;
-            text-align: left;
-            backdrop-filter: blur(6px);
-        }
-        ol, ul {
-            margin: 10px 0 10px 24px;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
-            color: var(--neon-pink);
-            text-decoration: underline;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-        a:hover {
-            color: var(--neon-blue);
-        }
-        .footer {
+
+        body::before {
+            content: '';
             position: fixed;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.95em;
-            color: var(--neon-blue);
-            letter-spacing: 1px;
-            text-shadow: 0 0 8px var(--neon-pink);
-            z-index: 10;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(138, 43, 226, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(75, 0, 130, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
-        @media (max-width: 600px) {
-            h1 { font-size: 1.3em; }
-            .section { padding: 12px 6px; }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            background: rgba(138, 43, 226, 0.08);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(183, 148, 246, 0.25);
+            padding: 2rem 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #b794f6 0%, #e879f9 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-home {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
+        }
+
+        /* Main Layout */
+        .help-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 0;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background: rgba(138, 43, 226, 0.05);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(183, 148, 246, 0.15);
+            padding: 2rem 0;
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(124, 58, 237, 0.5);
+            border-radius: 3px;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-category {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #c084fc;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.8rem 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(183, 148, 246, 0.1);
+            border-left-color: rgba(183, 148, 246, 0.5);
+        }
+
+        .nav-link.active {
+            color: #e879f9;
+            background: rgba(183, 148, 246, 0.15);
+            border-left-color: #e879f9;
+            font-weight: 700;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 3rem;
+            max-width: 900px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #b794f6 0%, #e879f9 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 120px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            color: #c084fc;
+        }
+
+        .subsection {
+            margin-bottom: 2.5rem;
+        }
+
+        .subsection-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #e879f9;
+            margin-bottom: 1rem;
+        }
+
+        .text-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding: 1.5rem 1.5rem 1.5rem 4rem;
+            margin-bottom: 1rem;
+            background: rgba(138, 43, 226, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            border: 1px solid rgba(183, 148, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .step-list li:hover {
+            background: rgba(138, 43, 226, 0.12);
+            border-color: rgba(183, 148, 246, 0.3);
+            transform: translateX(5px);
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 1.2rem;
+            top: 1.5rem;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .info-card {
+            background: rgba(0, 152, 255, 0.1);
+            border-left: 4px solid #0098ff;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-card {
+            background: rgba(255, 167, 38, 0.1);
+            border-left: 4px solid #ffa726;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .success-card {
+            background: rgba(0, 210, 106, 0.1);
+            border-left: 4px solid #00d26a;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .card-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: rgba(138, 43, 226, 0.08);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(183, 148, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(138, 43, 226, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            color: #c084fc;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(183, 148, 246, 0.15);
+            color: #c084fc;
+            border: 1px solid rgba(183, 148, 246, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(183, 148, 246, 0.25);
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #e879f9;
+        }
+
+        .screenshot-placeholder {
+            background: rgba(138, 43, 226, 0.1);
+            border: 2px dashed rgba(183, 148, 246, 0.3);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .help-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                top: 0;
+                border-right: none;
+                border-bottom: 1px solid rgba(183, 148, 246, 0.15);
+            }
+
+            .content {
+                padding: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Shadow Slime Launcher Help</h1>
-    
-    <div class="section">
-        <h2>🟣 How to Actually Use It (Step by Step)</h2>
-        <ol>
-            <li>
-                <b>Download the Launcher:</b><br>
-                Go to the <a href="https://jogamerforgames2021.github.io/AmongUsShadowSlime/" target="_blank">official Shadow Slime website</a> and click <b>Download Launcher</b> to get the latest <code>AmongUsLauncher.exe</code>.
-            </li>
-            <li>
-                <b>Run as Administrator:</b><br>
-                <b>Right-click</b> the launcher and choose <b>Run as administrator</b>.<br>
-                This is required so the launcher can install/update the game and create shortcuts.<br>
-                If Windows asks for permission, click <b>Yeas</b>.
-            </li>
-            <li>
-                <b>Launcher Startup:</b><br>
-                When you start the launcher, it will:<br>
-                - Check for updates to itself and update if needed.<br>
-                - Show a message from Shadow (if available).<br>
-                - Start Discord Rich Presence.
-            </li>
-            <li>
-                <b>First-Time Setup / Installing the Game:</b><br>
-                If Among Us is <b>not installed</b>:<br>
-                - The launcher will say the game isn’t found and ask if you want to download it.<br>
-                - Type <b>yes</b> and press Enter.<br>
-                - It will ask where to install the game:<br>
-                  &nbsp;&nbsp;• Press Enter to use the default folder (recommended).<br>
-                  &nbsp;&nbsp;• Or type a custom folder path and press Enter.<br>
-                - The launcher will download and extract the latest version for you.<br>
-                - When done, you’ll see a success message.
-            </li>
-            <li>
-                <b>Main Menu Options:</b><br>
-                After setup, you’ll see a menu like this:<br>
-                <code>
-[1] Run Game   [2] Exit   [3] YouTube   [4] Discord<br>
-[5] Create a Shortcut   [6] Open Folder<br>
-[7] Reinstall Among Us  [8] Uninstall
-                </code>
-                <ul>
-                    <li><b>1. Run Game:</b> Launches Among Us.</li>
-                    <li><b>2. Exit:</b> Closes the launcher.</li>
-                    <li><b>3. YouTube:</b> Opens the Shadow Slime YouTube channel.</li>
-                    <li><b>4. Discord:</b> Opens the Discord server invite.</li>
-                    <li><b>5. Create a Shortcut:</b> Puts a shortcut to Among Us on your desktop.</li>
-                    <li><b>6. Open Folder:</b> Opens the folder where the game is installed.</li>
-                    <li><b>7. Reinstall Among Us:</b> Redownloads and reinstalls the game (use if you have problems).</li>
-                    <li><b>8. Uninstall:</b> Removes the game and all launcher data from your PC.</li>
-                </ul>
-            </li>
-            <li>
-                <b>Updating the Game:</b><br>
-                Every time you start the launcher, it checks for new versions.<br>
-                If an update is found, it will ask if you want to update.<br>
-                Type <b>yes</b> and press Enter to update.<br>
-                The launcher will download and install the update for you.
-            </li>
-            <li>
-                <b>Uninstalling:</b><br>
-                Choose option <b>8</b> from the menu.<br>
-                Type <b>yes</b> to confirm.<br>
-                The launcher will delete the game and its data.
-            </li>
-            <li>
-                <b>Discord Rich Presence:</b><br>
-                If you have Discord running, your status will show you’re using the launcher.<br>
-                If you see a warning about <code>pypresence</code>, you can install it with:<br>
-                <code>pip install pypresence</code> (optional, for advanced users).
-            </li>
-            <li>
-                <b>Troubleshooting:</b><br>
-                <ul>
-                    <li><b>No Internet?</b> The launcher needs internet to download and update the game.</li>
-                    <li><b>Permissions?</b> Always run as administrator.</li>
-                    <li><b>Game not launching?</b> Try reinstalling (option 7).</li>
-                    <li><b>Need help?</b> Join the <a href="https://discord.com/invite/7Vvj2vpT6S" target="_blank">Discord server</a>.</li>
-                </ul>
-            </li>
-        </ol>
-    </div>
+    <header>
+        <div class="header-content">
+            <div class="logo">🚀 Among Us Launcher</div>
+            <a href="index.html" class="back-home">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </header>
 
-    <div class="section">
-        <h2>🌐 Community & Feedback</h2>
-        <ul>
-            <li>
-                <b>Discord:</b> <a href="https://discord.com/invite/7Vvj2vpT6S" target="_blank">Join here</a>
-            </li>
-            <li>
-                <b>Feedback:</b> Let us know your thoughts and suggestions on Discord!
-            </li>
-        </ul>
-    </div>
+    <div class="container">
+        <div class="help-layout">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <nav>
+                    <div class="nav-section">
+                        <div class="nav-category">Website</div>
+                        <a href="#download-launcher" class="nav-link">How to Download Launcher</a>
+                        <a href="#download-direct" class="nav-link">Download Game Directly</a>
+                        <a href="#submit-feedback" class="nav-link">Submit Feedback</a>
+                        <a href="#discord" class="nav-link">Join Discord</a>
+                    </div>
 
-    <div class="footer">Shadow Slime says hi chat.</div>
+                    <div class="nav-section">
+                        <div class="nav-category">Launcher</div>
+                        <a href="#getting-started" class="nav-link">Getting Started</a>
+                        <a href="#install-game" class="nav-link">Installing the Game</a>
+                        <a href="#auto-updates" class="nav-link">Auto-Updates</a>
+                        <a href="#version-management" class="nav-link">Version Management</a>
+                        <a href="#discord-rpc" class="nav-link">Discord Rich Presence</a>
+                        <a href="#aunlocker" class="nav-link">Installing AUnlocker</a>
+                        <a href="#shortcuts" class="nav-link">Creating Shortcuts</a>
+                        <a href="#settings" class="nav-link">Launcher Settings</a>
+                        <a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+                        <a href="#redistributables" class="nav-link">Required Software</a>
+                        <a href="#support" class="nav-link">Support</a>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <div class="hero-section">
+                    <h1 class="hero-title">Help Center</h1>
+                    <p class="hero-subtitle">Everything you need to know about Among Us Launcher</p>
+                </div>
+
+                <!-- WEBSITE SECTION -->
+                <section id="download-launcher" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">🌐</span>
+                        How to Download the Launcher
+                    </h2>
+                    
+                    <div class="text-content">
+                        The launcher is your all-in-one tool for managing Among Us installations. It provides automatic updates, version management, and Discord integration.
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Download Steps</h3>
+                        <ol class="step-list">
+                            <li>
+                                <strong>Visit the Website</strong><br>
+                                Go to the Among Us Launcher homepage and look for the main download button
+                            </li>
+                            <li>
+                                <strong>Click "Download Launcher"</strong><br>
+                                The large purple button will start downloading <code>AmongUsLauncher.exe</code>
+                            </li>
+                            <li>
+                                <strong>Save the File</strong><br>
+                                Choose a location you'll remember (Desktop or Downloads folder recommended)
+                            </li>
+                            <li>
+                                <strong>Run the Launcher</strong><br>
+                                Double-click the downloaded .exe file to start the launcher
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="warning-card">
+                        <div class="card-title">
+                            <i class="fas fa-shield-alt"></i> Security Notice
+                        </div>
+                        <p>Windows may show a SmartScreen warning since this is a new application. Click "More info" then "Run anyway" to proceed. The launcher is safe and open-source.</p>
+                    </div>
+                </section>
+
+                <section id="download-direct" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">📦</span>
+                        Download Game Directly
+                    </h2>
+                    
+                    <div class="text-content">
+                        If you prefer to download the game without using the launcher, you can select a specific version directly from the website.
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Direct Download Steps</h3>
+                        <ol class="step-list">
+                            <li>
+                                <strong>Find Version Selector</strong><br>
+                                Below the main download button, you'll see "Or download Among Us [version] directly"
+                            </li>
+                            <li>
+                                <strong>Click the Version Number</strong><br>
+                                A dropdown will appear showing all available versions
+                            </li>
+                            <li>
+                                <strong>Select Your Version</strong><br>
+                                The latest version is marked with a "Latest" badge. Click any version to download
+                            </li>
+                            <li>
+                                <strong>Extract and Play</strong><br>
+                                Unzip the downloaded file and run <code>Among Us.exe</code>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title">
+                            <i class="fas fa-info-circle"></i> Recommendation
+                        </div>
+                        <p>We recommend using the launcher for automatic updates and easier version management, but direct downloads work great if you just need a specific version quickly.</p>
+                    </div>
+                </section>
+
+                <section id="submit-feedback" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">💬</span>
+                        Submit Feedback
+                    </h2>
+                    
+                    <div class="text-content">
+                        Your feedback helps us improve the launcher and website! We value bug reports, feature requests, and general suggestions.
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">How to Submit</h3>
+                        <ol class="step-list">
+                            <li>
+                                <strong>Click Feedback Icon</strong><br>
+                                At the bottom of the homepage, click the message icon (💬) labeled "Feedback"
+                            </li>
+                            <li>
+                                <strong>Fill Out the Form</strong><br>
+                                You'll be taken to a Google Form where you can describe your issue or suggestion
+                            </li>
+                            <li>
+                                <strong>Include Details</strong><br>
+                                The more details you provide, the better we can help (version numbers, screenshots, steps to reproduce)
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="button-group">
+                        <a href="https://forms.gle/oRoAs4cfrWcs7UgL7" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit Feedback
+                        </a>
+                    </div>
+                </section>
+
+                <section id="discord" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">💜</span>
+                        Join Our Discord
+                    </h2>
+                    
+                    <div class="text-content">
+                        Join our Discord community for live support, updates, and to connect with other players!
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-headset"></i>
+                            <h4>Live Support</h4>
+                            <p>Get help from the community and developers in real-time</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bell"></i>
+                            <h4>Update Notifications</h4>
+                            <p>Be the first to know about new versions and features</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <h4>Community</h4>
+                            <p>Connect with other Among Us players and mod enthusiasts</p>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <a href="https://discord.com/invite/7Vvj2vpT6S" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-discord"></i> Join Discord Server
+                        </a>
+                    </div>
+                </section>
+
+                <!-- LAUNCHER SECTION -->
+                <section id="getting-started" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">🚀</span>
+                        Getting Started with the Launcher
+                    </h2>
+                    
+                    <div class="text-content">
+                        The Among Us Launcher is a powerful desktop application that manages your game installations, handles updates automatically, and provides additional features like Discord Rich Presence.
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">First Launch</h3>
+                        <ol class="step-list">
+                            <li>
+                                <strong>Run the Launcher</strong><br>
+                                Double-click <code>AmongUsLauncher.exe</code> - the modern GUI will open
+                            </li>
+                            <li>
+                                <strong>Internet Connection Check</strong><br>
+                                The launcher will verify your internet connection and check for launcher updates
+                            </li>
+                            <li>
+                                <strong>Main Interface</strong><br>
+                                You'll see version information, a large install/launch button, and a sidebar menu
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="success-card">
+                        <div class="card-title">
+                            <i class="fas fa-check-circle"></i> Quick Tip
+                        </div>
+                        <p>The launcher remembers your settings and game location between sessions, so you only need to set things up once!</p>
+                    </div>
+                </section>
+
+                <section id="install-game" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">⬇️</span>
+                        Installing the Game
+                    </h2>
+                    
+                    <div class="subsection">
+                        <h3 class="subsection-title">Automatic Installation</h3>
+                        <ol class="step-list">
+                            <li>
+                                <strong>Click "INSTALL GAME"</strong><br>
+                                The large green button in the center will start the installation process
+                            </li>
+                            <li>
+                                <strong>Choose Installation Folder</strong><br>
+                                A folder browser will appear - select where you want Among Us installed
+                            </li>
+                            <li>
+                                <strong>Download Progress</strong><br>
+                                Watch the progress bar as the launcher downloads the latest version with real-time speed indicators
+                            </li>
+                            <li>
+                                <strong>Automatic Extraction</strong><br>
+                                The launcher will automatically extract the game files to your chosen location
+                            </li>
+                            <li>
+                                <strong>Ready to Play</strong><br>
+                                Once complete, the button changes to "LAUNCH GAME" - you're ready to play!
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title">
+                            <i class="fas fa-folder"></i> Installation Location
+                        </div>
+                        <p>You can install the game anywhere, but we recommend a dedicated folder like <code>C:\Games\Among Us</code> for easy management.</p>
+                    </div>
+                </section>
+
+                <section id="auto-updates" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">🔄</span>
+                        Automatic Updates
+                    </h2>
+                    
+                    <div class="text-content">
+                        The launcher continuously monitors for new game versions and can update automatically.
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">How Updates Work</h3>
+                        <ul class="step-list">
+                            <li>
+                                <strong>Version Checking</strong><br>
+                                Every time you open the launcher, it checks for new versions in the background
+                            </li>
+                            <li>
+                                <strong>Update Notification</strong><br>
+                                If an update is available, the main button changes to "UPDATE AVAILABLE" in blue
+                            </li>
+                            <li>
+                                <strong>One-Click Update</strong><br>
+                                Click the update button to download and install the latest version automatically
+                            </li>
+                            <li>
+                                <strong>File Integrity</strong><br>
+                                Updates include SHA256 checksum verification to ensure files aren't corrupted
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-sync-alt"></i> Check for Updates
+                        </button>
+                    </div>
+                </section>
+
+                <section id="version-management" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">📋</span>
+                        Version Management
+                    </h2>
+                    
+                    <div class="text-content">
+                        Need to run an older version? The launcher supports installing any available version of Among Us.
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Installing Specific Versions</h3>
+                        <ol class="step-list">
+                            <li>
+                                <strong>Click "Install Specific"</strong><br>
+                                This button is next to the main action button in the Game tab
+                            </li>
+                            <li>
+                                <strong>Browse Versions</strong><br>
+                                A window appears showing all available versions from newest to oldest
+                            </li>
+                            <li>
+                                <strong>Select Version</strong><br>
+                                Click on any version in the list, then click "Install Selected"
+                            </li>
+                            <li>
+                                <strong>Installation</strong><br>
+                                The launcher downloads and installs your selected version
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="warning-card">
+                        <div class="card-title">
+                            <i class="fas fa-exclamation-triangle"></i> Important
+                        </div>
+                        <p>Installing a different version will replace your current installation. Make sure to backup save files if needed!</p>
+                    </div>
+                </section>
+
+                <section id="discord-rpc" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">💬</span>
+                        Discord Rich Presence
+                    </h2>
+                    
+                    <div class="text-content">
+                        Show your friends what you're playing with integrated Discord Rich Presence support!
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Setting Up</h3>
+                        <ol class="step-list">
+                            <li>
+                                <strong>Enable in Settings</strong><br>
+                                Go to Settings from the sidebar menu and check "Discord Rich Presence"
+                            </li>
+                            <li>
+                                <strong>Discord Must Be Running</strong><br>
+                                Make sure Discord is open on your computer before launching the game
+                            </li>
+                            <li>
+                                <strong>Automatic Display</strong><br>
+                                When enabled, your Discord status will show "Playing Among Us" with version info
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title">
+                            <i class="fas fa-info-circle"></i> What's Displayed
+                        </div>
+                        <p>Your Discord status will show: "Playing Among Us Shadow Slime" with details about the version you're using and whether you're in the launcher or in-game.</p>
+                    </div>
+                </section>
+                    <section id="aunlocker" class="section">
+                        <h2 class="section-title">
+                            <span class="section-icon">🔓</span>
+                            Installing AUnlocker
+                        </h2>
+
+                        <div class="text-content">
+                            AUnlocker is an optional mod that unlocks all available cosmetics in Among Us and allows the use of extended character sets (such as Russian and other non-default characters) for player names.
+                        </div>
+
+                        <div class="text-content">
+                            This mod only affects visual and cosmetic elements. It does not modify gameplay mechanics, provide unfair advantages, or interfere with multiplayer functionality.
+                        </div>
+
+                        <ol class="step-list">
+                            <li>
+                                <strong>Open the Launcher</strong><br>
+                                Launch Among Us Launcher and navigate to the Tools or Mods section
+                            </li>
+                            <li>
+                                <strong>Install AUnlocker</strong><br>
+                                Click the "Install AUnlocker" button and wait for the installation to finish
+                            </li>
+                            <li>
+                                <strong>Launch the Game</strong><br>
+                                Start the game normally through the launcher
+                            </li>
+                            <li>
+                                <strong>Enjoy Unlocked Content</strong><br>
+                                All cosmetics and extended name characters will now be available in-game
+                            </li>
+                        </ol>
+
+                        <div class="success-card">
+                            <div class="card-title">
+                                <i class="fas fa-check-circle"></i> Safety Information
+                            </div>
+                            <p>
+                                AUnlocker is designed to be safe and cosmetic-only. It does not contain malware, does not access personal data, and does not introduce known risks when used through the launcher.
+                            </p>
+                        </div>
+                    </section>
+                    <section id="shortcuts" class="section">
+                        <h2 class="section-title">
+                            <span class="section-icon">🧷</span>
+                            Creating Shortcuts
+                        </h2>
+
+                        <div class="text-content">
+                            The launcher can create desktop shortcuts for quick access to specific game versions.
+                        </div>
+
+                        <ol class="step-list">
+                            <li>Select a game version in the launcher</li>
+                            <li>Click "Create Desktop Shortcut"</li>
+                            <li>A shortcut will appear on your desktop</li>
+                        </ol>
+                    </section>
+                    <section id="settings" class="section">
+                        <h2 class="section-title">
+                            <span class="section-icon">⚙️</span>
+                            Launcher Settings
+                        </h2>
+
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <h4>Auto Updates</h4>
+                                <p>Automatically download new game versions.</p>
+                            </div>
+                            <div class="feature-item">
+                                <h4>Discord RPC</h4>
+                                <p>Show your activity on Discord.</p>
+                            </div>
+                            <div class="feature-item">
+                                <h4>Custom Install Path</h4>
+                                <p>Choose where the game is installed.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="troubleshooting" class="section">
+                        <h2 class="section-title">
+                            <span class="section-icon">🛠️</span>
+                            Troubleshooting
+                        </h2>
+
+                        <ul class="step-list">
+                            <li>Launcher not opening → Run as administrator</li>
+                            <li>Game not launching → Reinstall game from launcher</li>
+                            <li>Antivirus blocking → Add launcher folder to exclusions</li>
+                            <li>Discord RPC not working → Restart Discord</li>
+                        </ul>
+                    </section>
+                    <section id="support" class="section">
+                        <h2 class="section-title">
+                            <span class="section-icon">🛟</span>
+                            Support & Help
+                        </h2>
+
+                        <div class="text-content">
+                            We offer multiple ways to get help depending on the type of issue you are experiencing. Please read this section carefully to understand how support works and what we can (and cannot) help with.
+                        </div>
+
+                        <!-- Discord Support -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">Discord Support</h3>
+
+                            <div class="text-content">
+                                Our Discord server is the primary place for real-time support and community discussion. Support there is mainly focused on the <strong>Among Us Launcher</strong> itself.
+                            </div>
+
+                            <div class="info-card">
+                                <div class="card-title">
+                                    <i class="fas fa-info-circle"></i> Important Notice
+                                </div>
+                                <p>
+                                    Help for <strong>Among Us game-related issues is not guaranteed</strong>. While community members may try to help, the Discord server primarily supports launcher-related problems.
+                                </p>
+                            </div>
+
+                            <div class="text-content">
+                                Examples of issues we <strong>can help with</strong> on Discord:
+                            </div>
+
+                            <ul class="step-list">
+                                <li>Launcher not opening or crashing</li>
+                                <li>Download or installation problems</li>
+                                <li>Version management issues</li>
+                                <li>AUnlocker installation via the launcher</li>
+                                <li>Launcher settings and Discord Rich Presence</li>
+                            </ul>
+                        </div>
+
+                        <!-- Game Issues Requirements -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">Among Us Game Issues (Read Before Asking)</h3>
+
+                            <div class="warning-card">
+                                <div class="card-title">
+                                    <i class="fas fa-exclamation-triangle"></i> Required Setup
+                                </div>
+                                <p>
+                                    If Among Us fails to launch, crashes, or gets stuck on an infinite loading screen, you must ensure your system is properly set up before requesting help.
+                                </p>
+                            </div>
+
+                            <ul class="step-list">
+                                <li>
+                                    <strong>Install All Required Redistributables</strong><br>
+                                    Make sure you have all necessary Microsoft Visual C++ Redistributables and runtime components installed. Missing redistributables can prevent the game from launching entirely.
+                                </li>
+                                <li>
+                                    <strong>Disable Real-Time Protection Temporarily</strong><br>
+                                    Antivirus real-time protection may falsely detect or delete game files, causing crashes or infinite loading screens.
+                                </li>
+                                <li>
+                                    <strong>Restore Deleted Files</strong><br>
+                                    If your antivirus removed files from the main game folder, the game may become unplayable and require reinstallation.
+                                </li>
+                                <li>
+                                    <strong>Reinstall the Game if Needed</strong><br>
+                                    If issues persist, reinstall the game through the launcher to restore missing or corrupted files.
+                                </li>
+                            </ul>
+
+                            <div class="info-card">
+                                <div class="card-title">
+                                    <i class="fas fa-shield-alt"></i> Antivirus Note
+                                </div>
+                                <p>
+                                    We strongly recommend adding the launcher and game folder to your antivirus exclusions to prevent files from being deleted automatically.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Feedback & Forms -->
+                        <div class="subsection">
+                            <h3 class="subsection-title">Feedback & Bug Reports</h3>
+
+                            <div class="text-content">
+                                For non-urgent issues, detailed bug reports, or feature suggestions, please use the feedback form. This allows us to review issues properly and improve the launcher over time.
+                            </div>
+
+                            <ul class="step-list">
+                                <li>Launcher bugs that are reproducible</li>
+                                <li>Feature requests or suggestions</li>
+                                <li>Website-related issues</li>
+                                <li>Crash reports with logs or screenshots</li>
+                            </ul>
+
+                            <div class="button-group">
+                                <a href="https://forms.gle/oRoAs4cfrWcs7UgL7" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i> Submit Feedback Form
+                                </a>
+                                <a href="https://discord.com/invite/7Vvj2vpT6S" target="_blank" class="btn btn-secondary">
+                                    <i class="fab fa-discord"></i> Join Discord
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                <section id="redistributables" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon">📦</span>
+                        Required Software & Redistributables
+                    </h2>
+
+                    <div class="text-content">
+                        If you are experiencing issues such as the game not launching, crashing on startup, or getting stuck on an infinite loading screen, please make sure your system has the required software installed.
+                    </div>
+
+                    <div class="text-content">
+                        Just like hardware requirements, many games depend on specific software components to run properly. Missing or corrupted redistributables can prevent Among Us from launching entirely.
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Required Software List</h3>
+
+                        <ul class="step-list">
+                            <li>Microsoft Visual C++ 2010 (x86)</li>
+                            <li>Microsoft Visual C++ 2010 (x64)</li>
+                            <li>Microsoft Visual C++ 2015–2019 (x86)</li>
+                            <li>Microsoft Visual C++ 2015–2019 (x64)</li>
+                            <li>OpenAL (by Creative Labs)</li>
+                            <li>DirectX 10 or newer</li>
+                            <li>Microsoft .NET Framework 4.0</li>
+                            <li>Microsoft XNA Framework Redistributable 4.0</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title">
+                            <i class="fas fa-info-circle"></i> Important Notes
+                        </div>
+                        <p>
+                            Make sure to install <strong>both x86 and x64 versions</strong> where available, even if you are using a 64-bit system.
+                        </p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Additional Requirements</h3>
+
+                        <ul class="step-list">
+                            <li>
+                                <strong>Default Browser</strong><br>
+                                Ensure a default web browser is set on your system. Some game features rely on it.
+                            </li>
+                            <li>
+                                <strong>Run as Administrator</strong><br>
+                                Right-click <code>Among Us.exe</code> and choose <strong>Run as administrator</strong>.
+                            </li>
+                            <li>
+                                <strong>Disable Antivirus During Extraction</strong><br>
+                                Antivirus real-time protection may delete important game files during extraction.
+                            </li>
+                            <li>
+                                <strong>Add Exclusions</strong><br>
+                                Add the launcher and game folders to your antivirus exclusions list to prevent future issues.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="success-card">
+                        <div class="card-title">
+                            <i class="fas fa-check-circle"></i> Final Note
+                        </div>
+                        <p>
+                            If you follow all steps exactly, the game should launch and run without issues. Enjoy, and have fun playing!
+                        </p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Download Links</h3>
+
+                        <div class="button-group">
+                            <a href="https://www.microsoft.com/en-us/download/details.aspx?id=26999" target="_blank" class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Visual C++ 2010 (x86 & x64)
+                            </a>
+                            <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170" target="_blank" class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Visual C++ 2015–2019
+                            </a>
+                            <a href="https://www.openal.org/downloads/" target="_blank" class="btn btn-secondary">
+                                <i class="fas fa-download"></i> OpenAL
+                            </a>
+                            <a href="https://www.microsoft.com/en-us/download/details.aspx?id=35" target="_blank" class="btn btn-secondary">
+                                <i class="fas fa-download"></i> DirectX Runtime
+                            </a>
+                            <a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/net40" target="_blank" class="btn btn-secondary">
+                                <i class="fas fa-download"></i> .NET Framework 4.0
+                            </a>
+                            <a href="https://www.microsoft.com/en-us/download/details.aspx?id=20914" target="_blank" class="btn btn-secondary">
+                                <i class="fas fa-download"></i> XNA Framework 4.0
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
 </body>
 </html>
