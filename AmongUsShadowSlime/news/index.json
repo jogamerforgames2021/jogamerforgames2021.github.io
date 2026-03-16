@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "launcher-v14-release",
+    "title": "Launcher v1.4 — Biggest Update Yet",
+    "brief": "New UI built with Tauri, mods tab, Discord RPC, AUnlocker config editor, download pill with live speed graph and a lot more.",
+    "date": "2025-03-16",
+    "category": "Update",
+    "priority": "featured",
+    "cover": "https://i.ibb.co/C38dqb8W/image-2025-12-31-211529273.png"
+  },
+  {
+    "slug": "aunlocker-support",
+    "title": "AUnlocker Now Supported In-Launcher",
+    "brief": "Install, enable/disable and configure AUnlocker without ever touching a file manually.",
+    "date": "2025-03-10",
+    "category": "Announcement",
+    "priority": "high",
+    "cover": ""
+  },
+  {
+    "slug": "welcome",
+    "title": "Welcome to ShadowSlime",
+    "brief": "The launcher is live. Here's what it is, what it does, and what's coming next.",
+    "date": "2025-01-01",
+    "category": "Announcement",
+    "priority": "normal",
+    "cover": ""
+  }
+]
